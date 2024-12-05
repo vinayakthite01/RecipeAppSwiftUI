@@ -6,40 +6,33 @@
 //
 
 import Foundation
+import Combine
 
 class CategoriesViewModel: ObservableObject {
     @Published var categories: [Category] = []
     @Published var isLoading: Bool = false
     @Published var errorMessage: String?
 
+    private var cancellables = Set<AnyCancellable>()
+    private let apiService = APIService()
+
     func fetchCategories() {
-        let urlString = "https://www.themealdb.com/api/json/v1/1/categories.php"
-        guard let url = URL(string: urlString) else {
-            self.errorMessage = "Invalid URL"
-            return
-        }
-
-        self.isLoading = true
-        URLSession.shared.dataTask(with: url) { data, response, error in
-            DispatchQueue.main.async {
-                self.isLoading = false
-                if let error = error {
-                    self.errorMessage = "Error: \(error.localizedDescription)"
-                    return
+        isLoading = true
+        errorMessage = nil
+        
+        apiService.fetchAllCategories()
+            .sink { [weak self] completion in
+                self?.isLoading = false
+                switch completion {
+                case .finished:
+                    break
+                case .failure(let apiError):
+                    self?.errorMessage = apiError.localizedDescription
                 }
-
-                guard let data = data else {
-                    self.errorMessage = "No data received"
-                    return
-                }
-
-                do {
-                    let decodedResponse = try JSONDecoder().decode(CategoriesModel.self, from: data)
-                    self.categories = decodedResponse.categories
-                } catch {
-                    self.errorMessage = "Failed to decode response: \(error.localizedDescription)"
-                }
+            } receiveValue: { [weak self] response in
+                Logger.log("Response: \(response)")
+//                self?.categories = response
             }
-        }.resume()
+            .store(in: &cancellables)
     }
 }
