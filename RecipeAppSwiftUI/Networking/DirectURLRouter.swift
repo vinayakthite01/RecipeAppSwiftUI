@@ -10,17 +10,20 @@ import Combine
 
 final class DirectURLRouter<EndPoint: EndPointType> {
 
-    @Published var isConnected: Bool = false
+    @Published var isConnected: Bool = true
     private var cancellables = Set<AnyCancellable>()
     
     init() {
         NetworkMonitor.shared.isConnectedPublisher
             .receive(on: DispatchQueue.main)
-            .assign(to: &$isConnected)
+            .sink { [weak self] isConnected in
+                self?.isConnected = isConnected
+            }
+            .store(in: &cancellables)
     }
     
     /// Request a network call and return a Publisher
-    func request<T: Decodable>(_ route: EndPoint, decode: @escaping (Decodable) -> T?) -> AnyPublisher<T, APIError> {
+    func request<T: Decodable>(_ route: EndPoint, responseType: T.Type) -> AnyPublisher<T, APIError> {
         
         // Check if network is connected
         if !isConnected {
@@ -28,7 +31,7 @@ final class DirectURLRouter<EndPoint: EndPointType> {
         }
         
         // Build URLRequest
-        guard let url = URL(string: route.path) else {
+        guard let url = URL(string: route.scheme+"://"+route.baseURL+route.path) else {
             return Fail(error: .somethingWentWrong).eraseToAnyPublisher()
         }
         
@@ -48,18 +51,21 @@ final class DirectURLRouter<EndPoint: EndPointType> {
                 switch httpResponse.statusCode {
                 case 401:
                     throw APIError.unauthorised
+                case 202:
+                    throw APIError.accepted
+                case 204:
+                    throw APIError.noContent
                 default:
                     break
                 }
                 
                 Logger.logResponse(data, url: urlRequest.url!, code: httpResponse.statusCode)
-                return data
-            }
-            .tryMap { data -> T in
-                // Decode the data using the provided `decode` closure
-                if let decodedObject = decode(data) {
-                    return decodedObject
-                } else {
+                
+                do {
+                    let decoder = JSONDecoder()
+                    decoder.dateDecodingStrategy = .formatted(.iso8601Full)
+                    return try decoder.decode(T.self, from: data)
+                } catch {
                     throw APIError.jsonDecodingFailure
                 }
             }

@@ -40,7 +40,7 @@ final class Logger {
         if Logger.sharedLogger.isLogEnabled == false && logType != .kImportant {
             return
         } else {
-            print(Logger.sharedLogger.isLogEnabled ? "\nNewsApp Log\n\(logString)\n" : "")
+            print(Logger.sharedLogger.isLogEnabled ? "\nRecipeApp Log\n\(logString)\n" : "")
         }
     }
     
@@ -59,9 +59,9 @@ final class Logger {
         } else {
             do {
                 let response = try JSONSerialization.jsonObject(with: logData, options: .mutableContainers)
-                print(Logger.sharedLogger.isLogEnabled ? "\nNewsApp Log\nUrl:\(url)\nResponse:\n\(response)\nStatusCode:\(code)\n" : "")
+                print(Logger.sharedLogger.isLogEnabled ? "\nRecipeApp Log\nUrl:\(url)\nResponse:\n\(response)\nStatusCode:\(code)\n" : "")
             } catch let error {
-                print(Logger.sharedLogger.isLogEnabled ? "\nNewsApp Log\nUrl:\(url)\nError:\(error.localizedDescription)\nStatusCode:\(code)\n" : "")
+                print(Logger.sharedLogger.isLogEnabled ? "\nRecipeApp Log\nUrl:\(url)\nError:\(error.localizedDescription)\nStatusCode:\(code)\n" : "")
             }
         }
     }

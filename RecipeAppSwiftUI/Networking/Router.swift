@@ -10,13 +10,16 @@ import Combine
 
 final class Router<EndPoint: EndPointType> {
 
-    @Published var isConnected: Bool = false
+    @Published var isConnected: Bool = true
     private var cancellables = Set<AnyCancellable>()
     
     init() {
         NetworkMonitor.shared.isConnectedPublisher
             .receive(on: DispatchQueue.main)
-            .assign(to: &$isConnected)
+            .sink { [weak self] isConnected in
+                self?.isConnected = isConnected
+            }
+            .store(in: &cancellables)
     }
     
     /// Reactive API Request
@@ -56,16 +59,16 @@ final class Router<EndPoint: EndPointType> {
                     throw APIError.requestFailed(description: "Invalid Response")
                 }
                 
-                if httpResponse.statusCode == 401 {
+                // Handle specific HTTP status codes
+                switch httpResponse.statusCode {
+                case 401:
                     throw APIError.unauthorised
-                }
-                
-                if httpResponse.statusCode == 202 {
+                case 202:
                     throw APIError.accepted
-                }
-                
-                if httpResponse.statusCode == 204 {
+                case 204:
                     throw APIError.noContent
+                default:
+                    break
                 }
                 
                 Logger.logResponse(data, url: urlRequest.url!, code: httpResponse.statusCode)

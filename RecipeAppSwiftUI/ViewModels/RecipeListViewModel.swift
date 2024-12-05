@@ -21,16 +21,17 @@ class RecipeListViewModel: ObservableObject {
         errorMessage = nil
 
         apiService.fetchRecipes(category: category)
-            .sink { completion in
+            .sink { [weak self] completion in
+                self?.isLoading = false
                 switch completion {
                 case .finished:
                     break
                 case .failure(let apiError):
-                    self.errorMessage = apiError.localizedDescription
+                    self?.errorMessage = apiError.description
                 }
             } receiveValue: { [weak self] recipes in
                 self?.recipes = recipes
             }
-
+            .store(in: &cancellables)
     }
 }

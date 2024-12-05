@@ -22,17 +22,18 @@ class RecipeDetailViewModel: ObservableObject {
         errorMessage = nil
         
         apiService.fetchRecipe(recipeId: id)
-            .sink { completion in
+            .sink { [weak self] completion in
+                self?.isLoading = false
                 switch completion {
                 case .failure(let apiError):
-                    self.errorMessage = apiError.localizedDescription
+                    self?.errorMessage = apiError.description
                 case .finished:
                     break
                 }
-            } receiveValue: {[weak self] recipeDetails in
+            } receiveValue: { [weak self] recipeDetails in
                 Logger.log("RecipeDetail: \(recipeDetails)")
+                self?.recipeDetail = recipeDetails.first
             }
             .store(in: &cancellables)
-
     }
 }

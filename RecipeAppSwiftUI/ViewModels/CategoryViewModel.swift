@@ -27,11 +27,11 @@ class CategoriesViewModel: ObservableObject {
                 case .finished:
                     break
                 case .failure(let apiError):
-                    self?.errorMessage = apiError.localizedDescription
+                    self?.errorMessage = apiError.description
                 }
-            } receiveValue: { [weak self] response in
-                Logger.log("Response: \(response)")
-//                self?.categories = response
+            } receiveValue: { [weak self] categories in
+                Logger.log("Category Response: \(categories)")
+                self?.categories = categories
             }
             .store(in: &cancellables)
     }

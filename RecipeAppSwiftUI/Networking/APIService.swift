@@ -25,10 +25,12 @@ class APIService1 {
 class APIService {
     // Router to call baseURL APIs
     private let recipeRouter: Router<RecipeEndpoint>
+    private let directURLRouter: DirectURLRouter<RecipeEndpoint>
     private var cancellables = Set<AnyCancellable>()
     
     init() {
         self.recipeRouter = Router<RecipeEndpoint>()
+        self.directURLRouter = DirectURLRouter<RecipeEndpoint>()
     }
     
     func fetchAllCategories()  -> AnyPublisher<[Category], APIError> {
@@ -38,13 +40,13 @@ class APIService {
     }
     
     func fetchRecipes(category: String) -> AnyPublisher<[Recipe], APIError> {
-        recipeRouter.request(.getRecipeList(category: category), responseType: RecipesListModel.self)
+        directURLRouter.request(.getRecipeList(category: category), responseType: RecipesListModel.self)
             .map(\.meals)
             .eraseToAnyPublisher()
     }
     
     func fetchRecipe(recipeId: String) -> AnyPublisher<[RecipeDetail], APIError> {
-        recipeRouter.request(.getRecipeDetail(recipeId: recipeId), responseType: RecipeDetailModel.self)
+        directURLRouter.request(.getRecipeDetail(recipeId: recipeId), responseType: RecipeDetailModel.self)
             .map(\.meals)
             .eraseToAnyPublisher()
     }

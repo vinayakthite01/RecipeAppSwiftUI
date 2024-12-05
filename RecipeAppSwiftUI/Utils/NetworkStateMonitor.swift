@@ -35,6 +35,15 @@ final class NetworkMonitor {
                 self.subject.send(isConnected)
             }
         }
+
+        // Emit the initial connectivity status
+        DispatchQueue.global().async {
+            let isConnected = self.monitor.currentPath.status == .satisfied
+            DispatchQueue.main.async {
+                self.subject.send(isConnected)
+            }
+        }
+
         monitor.start(queue: monitorQueue)
     }
     
