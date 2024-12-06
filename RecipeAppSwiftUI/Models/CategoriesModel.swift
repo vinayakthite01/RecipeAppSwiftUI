@@ -11,7 +11,7 @@ struct CategoriesModel: Codable {
     let categories: [Category]
 }
 
-struct Category: Codable, Identifiable {
+struct Category: Codable, Identifiable, Equatable {
     let idCategory: String
     let strCategory: String
     let strCategoryThumb: String

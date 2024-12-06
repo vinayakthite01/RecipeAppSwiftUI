@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-final class Router<EndPoint: EndPointType> {
+class Router<EndPoint: EndPointType> {
 
     @Published var isConnected: Bool = true
     private var cancellables = Set<AnyCancellable>()

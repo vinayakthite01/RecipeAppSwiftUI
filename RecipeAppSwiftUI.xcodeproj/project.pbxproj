@@ -16,15 +16,25 @@
 		F36803242D008A7000DA7EC1 /* RecipeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36803232D008A7000DA7EC1 /* RecipeDetailView.swift */; };
 		F368032D2D00A7FD00DA7EC1 /* RouterHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F368032C2D00A7FD00DA7EC1 /* RouterHelper.swift */; };
 		F368032F2D00AC8F00DA7EC1 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = F368032E2D00AC8F00DA7EC1 /* Router.swift */; };
-		F36803312D00AD8C00DA7EC1 /* NetworkStateMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36803302D00AD8C00DA7EC1 /* NetworkStateMonitor.swift */; };
 		F36803332D00B22D00DA7EC1 /* DirectURLRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36803322D00B22D00DA7EC1 /* DirectURLRouter.swift */; };
 		F36803352D00B64600DA7EC1 /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36803342D00B64600DA7EC1 /* Endpoints.swift */; };
 		F36803372D00C13B00DA7EC1 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36803362D00C13B00DA7EC1 /* Logger.swift */; };
 		F368033A2D00C9C500DA7EC1 /* DateFormatter+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36803392D00C9C500DA7EC1 /* DateFormatter+Extension.swift */; };
+		F368033D2D01C0D500DA7EC1 /* MockNetworkPathMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F368033C2D01C0D500DA7EC1 /* MockNetworkPathMonitor.swift */; };
+		F36803402D01C15500DA7EC1 /* MockAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F368033F2D01C15500DA7EC1 /* MockAPIService.swift */; };
+		F36803462D01CC4300DA7EC1 /* NetworkStateMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36803452D01CC4300DA7EC1 /* NetworkStateMonitor.swift */; };
+		F36803482D01D37B00DA7EC1 /* APIServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36803472D01D37B00DA7EC1 /* APIServiceTests.swift */; };
+		F368034A2D01D3DB00DA7EC1 /* MockRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36803492D01D3DB00DA7EC1 /* MockRouter.swift */; };
+		F368034C2D01D48600DA7EC1 /* MockEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = F368034B2D01D48600DA7EC1 /* MockEndpoint.swift */; };
+		F368034E2D01D4AD00DA7EC1 /* MockURLProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = F368034D2D01D4AD00DA7EC1 /* MockURLProtocols.swift */; };
+		F36803512D01D4FD00DA7EC1 /* DirectURLRounterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36803502D01D4FD00DA7EC1 /* DirectURLRounterTests.swift */; };
+		F36803552D01E8CB00DA7EC1 /* TestDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36803542D01E8CB00DA7EC1 /* TestDataHelper.swift */; };
+		F368035C2D027EB400DA7EC1 /* RecipeListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F368035B2D027EB400DA7EC1 /* RecipeListViewModelTests.swift */; };
+		F368035E2D027ECE00DA7EC1 /* RecipeDetailsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F368035D2D027ECE00DA7EC1 /* RecipeDetailsViewModelTests.swift */; };
 		F38E76BF2CFF0617005756A5 /* RecipeAppSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38E76BE2CFF0617005756A5 /* RecipeAppSwiftUIApp.swift */; };
 		F38E76C32CFF0618005756A5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F38E76C22CFF0618005756A5 /* Assets.xcassets */; };
 		F38E76C62CFF0618005756A5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F38E76C52CFF0618005756A5 /* Preview Assets.xcassets */; };
-		F38E76D02CFF0619005756A5 /* RecipeAppSwiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38E76CF2CFF0619005756A5 /* RecipeAppSwiftUITests.swift */; };
+		F38E76D02CFF0619005756A5 /* CategoriesViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38E76CF2CFF0619005756A5 /* CategoriesViewModelTests.swift */; };
 		F38E76DA2CFF0619005756A5 /* RecipeAppSwiftUIUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38E76D92CFF0619005756A5 /* RecipeAppSwiftUIUITests.swift */; };
 		F38E76DC2CFF0619005756A5 /* RecipeAppSwiftUIUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38E76DB2CFF0619005756A5 /* RecipeAppSwiftUIUITestsLaunchTests.swift */; };
 		F38E76E92CFF16B4005756A5 /* CategoriesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38E76E82CFF16B4005756A5 /* CategoriesModel.swift */; };
@@ -63,17 +73,27 @@
 		F36803292D00A06000DA7EC1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F368032C2D00A7FD00DA7EC1 /* RouterHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterHelper.swift; sourceTree = "<group>"; };
 		F368032E2D00AC8F00DA7EC1 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
-		F36803302D00AD8C00DA7EC1 /* NetworkStateMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkStateMonitor.swift; sourceTree = "<group>"; };
 		F36803322D00B22D00DA7EC1 /* DirectURLRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectURLRouter.swift; sourceTree = "<group>"; };
 		F36803342D00B64600DA7EC1 /* Endpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
 		F36803362D00C13B00DA7EC1 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		F36803392D00C9C500DA7EC1 /* DateFormatter+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Extension.swift"; sourceTree = "<group>"; };
+		F368033C2D01C0D500DA7EC1 /* MockNetworkPathMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkPathMonitor.swift; sourceTree = "<group>"; };
+		F368033F2D01C15500DA7EC1 /* MockAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAPIService.swift; sourceTree = "<group>"; };
+		F36803452D01CC4300DA7EC1 /* NetworkStateMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkStateMonitor.swift; sourceTree = "<group>"; };
+		F36803472D01D37B00DA7EC1 /* APIServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIServiceTests.swift; sourceTree = "<group>"; };
+		F36803492D01D3DB00DA7EC1 /* MockRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockRouter.swift; sourceTree = "<group>"; };
+		F368034B2D01D48600DA7EC1 /* MockEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockEndpoint.swift; sourceTree = "<group>"; };
+		F368034D2D01D4AD00DA7EC1 /* MockURLProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLProtocols.swift; sourceTree = "<group>"; };
+		F36803502D01D4FD00DA7EC1 /* DirectURLRounterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectURLRounterTests.swift; sourceTree = "<group>"; };
+		F36803542D01E8CB00DA7EC1 /* TestDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDataHelper.swift; sourceTree = "<group>"; };
+		F368035B2D027EB400DA7EC1 /* RecipeListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeListViewModelTests.swift; sourceTree = "<group>"; };
+		F368035D2D027ECE00DA7EC1 /* RecipeDetailsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailsViewModelTests.swift; sourceTree = "<group>"; };
 		F38E76BB2CFF0617005756A5 /* RecipeAppSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecipeAppSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F38E76BE2CFF0617005756A5 /* RecipeAppSwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeAppSwiftUIApp.swift; sourceTree = "<group>"; };
 		F38E76C22CFF0618005756A5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F38E76C52CFF0618005756A5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F38E76CB2CFF0619005756A5 /* RecipeAppSwiftUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RecipeAppSwiftUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F38E76CF2CFF0619005756A5 /* RecipeAppSwiftUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeAppSwiftUITests.swift; sourceTree = "<group>"; };
+		F38E76CF2CFF0619005756A5 /* CategoriesViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewModelTests.swift; sourceTree = "<group>"; };
 		F38E76D52CFF0619005756A5 /* RecipeAppSwiftUIUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RecipeAppSwiftUIUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F38E76D92CFF0619005756A5 /* RecipeAppSwiftUIUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeAppSwiftUIUITests.swift; sourceTree = "<group>"; };
 		F38E76DB2CFF0619005756A5 /* RecipeAppSwiftUIUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeAppSwiftUIUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -133,7 +153,7 @@
 		F36803382D00C14A00DA7EC1 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				F36803302D00AD8C00DA7EC1 /* NetworkStateMonitor.swift */,
+				F36803452D01CC4300DA7EC1 /* NetworkStateMonitor.swift */,
 				F36803362D00C13B00DA7EC1 /* Logger.swift */,
 			);
 			path = Utils;
@@ -145,6 +165,45 @@
 				F36803392D00C9C500DA7EC1 /* DateFormatter+Extension.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		F368033E2D01C12500DA7EC1 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				F368033C2D01C0D500DA7EC1 /* MockNetworkPathMonitor.swift */,
+				F368033F2D01C15500DA7EC1 /* MockAPIService.swift */,
+				F36803492D01D3DB00DA7EC1 /* MockRouter.swift */,
+				F368034B2D01D48600DA7EC1 /* MockEndpoint.swift */,
+				F368034D2D01D4AD00DA7EC1 /* MockURLProtocols.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		F36803412D01C18000DA7EC1 /* ViewModelTests */ = {
+			isa = PBXGroup;
+			children = (
+				F38E76CF2CFF0619005756A5 /* CategoriesViewModelTests.swift */,
+				F368035B2D027EB400DA7EC1 /* RecipeListViewModelTests.swift */,
+				F368035D2D027ECE00DA7EC1 /* RecipeDetailsViewModelTests.swift */,
+			);
+			path = ViewModelTests;
+			sourceTree = "<group>";
+		};
+		F368034F2D01D4DA00DA7EC1 /* NetworkingTests */ = {
+			isa = PBXGroup;
+			children = (
+				F36803472D01D37B00DA7EC1 /* APIServiceTests.swift */,
+				F36803502D01D4FD00DA7EC1 /* DirectURLRounterTests.swift */,
+			);
+			path = NetworkingTests;
+			sourceTree = "<group>";
+		};
+		F36803562D01E8D700DA7EC1 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				F36803542D01E8CB00DA7EC1 /* TestDataHelper.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		F38E76B22CFF0617005756A5 = {
@@ -196,7 +255,10 @@
 		F38E76CE2CFF0619005756A5 /* RecipeAppSwiftUITests */ = {
 			isa = PBXGroup;
 			children = (
-				F38E76CF2CFF0619005756A5 /* RecipeAppSwiftUITests.swift */,
+				F368033E2D01C12500DA7EC1 /* Mocks */,
+				F36803412D01C18000DA7EC1 /* ViewModelTests */,
+				F368034F2D01D4DA00DA7EC1 /* NetworkingTests */,
+				F36803562D01E8D700DA7EC1 /* Helpers */,
 			);
 			path = RecipeAppSwiftUITests;
 			sourceTree = "<group>";
@@ -379,10 +441,10 @@
 				F36803332D00B22D00DA7EC1 /* DirectURLRouter.swift in Sources */,
 				F38E76F62CFF5702005756A5 /* Environment.swift in Sources */,
 				F368031E2D0086F900DA7EC1 /* APIService.swift in Sources */,
+				F36803462D01CC4300DA7EC1 /* NetworkStateMonitor.swift in Sources */,
 				F368032F2D00AC8F00DA7EC1 /* Router.swift in Sources */,
 				F36803242D008A7000DA7EC1 /* RecipeDetailView.swift in Sources */,
 				F38E76EC2CFF17DE005756A5 /* CategoryViewModel.swift in Sources */,
-				F36803312D00AD8C00DA7EC1 /* NetworkStateMonitor.swift in Sources */,
 				F36803352D00B64600DA7EC1 /* Endpoints.swift in Sources */,
 				F36803182D0083CA00DA7EC1 /* RecipeListView.swift in Sources */,
 				F368031C2D00843000DA7EC1 /* RecipeListModel.swift in Sources */,
@@ -396,7 +458,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F38E76D02CFF0619005756A5 /* RecipeAppSwiftUITests.swift in Sources */,
+				F368034C2D01D48600DA7EC1 /* MockEndpoint.swift in Sources */,
+				F368034A2D01D3DB00DA7EC1 /* MockRouter.swift in Sources */,
+				F36803402D01C15500DA7EC1 /* MockAPIService.swift in Sources */,
+				F368034E2D01D4AD00DA7EC1 /* MockURLProtocols.swift in Sources */,
+				F368033D2D01C0D500DA7EC1 /* MockNetworkPathMonitor.swift in Sources */,
+				F38E76D02CFF0619005756A5 /* CategoriesViewModelTests.swift in Sources */,
+				F36803482D01D37B00DA7EC1 /* APIServiceTests.swift in Sources */,
+				F36803512D01D4FD00DA7EC1 /* DirectURLRounterTests.swift in Sources */,
+				F368035C2D027EB400DA7EC1 /* RecipeListViewModelTests.swift in Sources */,
+				F36803552D01E8CB00DA7EC1 /* TestDataHelper.swift in Sources */,
+				F368035E2D027ECE00DA7EC1 /* RecipeDetailsViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

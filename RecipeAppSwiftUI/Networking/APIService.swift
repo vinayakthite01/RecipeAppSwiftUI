@@ -8,20 +8,6 @@
 import Foundation
 import Combine
 
-// MARK: - NetworkManager
-class APIService1 {
-    static let shared = APIService() // Singleton instance
-    private init() {}
-
-    func fetch<T: Decodable>(_ url: URL, type: T.Type) -> AnyPublisher<T, Error> {
-        URLSession.shared.dataTaskPublisher(for: url)
-            .map(\.data)
-            .decode(type: T.self, decoder: JSONDecoder())
-            .receive(on: DispatchQueue.main)
-            .eraseToAnyPublisher()
-    }
-}
-
 class APIService {
     // Router to call baseURL APIs
     private let recipeRouter: Router<RecipeEndpoint>
@@ -50,6 +36,4 @@ class APIService {
             .map(\.meals)
             .eraseToAnyPublisher()
     }
-    
 }
-

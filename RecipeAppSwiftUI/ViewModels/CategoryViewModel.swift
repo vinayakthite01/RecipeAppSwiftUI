@@ -14,7 +14,7 @@ class CategoriesViewModel: ObservableObject {
     @Published var errorMessage: String?
 
     private var cancellables = Set<AnyCancellable>()
-    private let apiService = APIService()
+    var apiService = APIService()
 
     func fetchCategories() {
         isLoading = true

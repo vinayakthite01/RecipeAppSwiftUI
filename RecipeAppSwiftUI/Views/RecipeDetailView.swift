@@ -40,6 +40,11 @@ struct RecipeDetailView: View {
 
                         Text("Cuisine: \(recipeDetail.strArea)")
                             .font(.subheadline)
+                        
+                        if let tags = recipeDetail.strTags {
+                            Text("Tags: \(tags)")
+                                .font(.subheadline)
+                        }
 
                         Divider()
 

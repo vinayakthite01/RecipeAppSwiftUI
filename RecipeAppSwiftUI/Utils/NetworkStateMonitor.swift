@@ -9,12 +9,19 @@ import Foundation
 import Network
 import Combine
 
+//protocol NetworkMonitorProtocol {
+//    var isConnectedPublisher: AnyPublisher<Bool, Never> { get set }
+//}
+
+//final class NetworkMonitor: NetworkMonitorProtocol {
+
 final class NetworkMonitor {
+    
     static let shared = NetworkMonitor()
     
     private let monitor: NWPathMonitor
     private let monitorQueue = DispatchQueue(label: "NetworkMonitorQueue")
-    private let subject = CurrentValueSubject<Bool, Never>(false)
+    let subject = CurrentValueSubject<Bool, Never>(false)
     
     /// Publisher for network connectivity
     var isConnectedPublisher: AnyPublisher<Bool, Never> {
