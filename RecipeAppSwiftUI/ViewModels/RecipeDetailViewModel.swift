@@ -15,7 +15,7 @@ class RecipeDetailViewModel: ObservableObject {
     @Published var errorMessage: String?
 
     private var cancellables = Set<AnyCancellable>()
-    private var apiService = APIService()
+    var apiService = APIService()
 
     func fetchRecipeDetail(for id: String) {
         isLoading = true

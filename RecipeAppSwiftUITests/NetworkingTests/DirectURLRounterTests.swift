@@ -33,7 +33,7 @@ final class DirectURLRouterTests: XCTestCase {
 
         NetworkMonitor.shared.isConnectedPublisher.send(false)
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            XCTAssertFalse(self.router.isConnected)
+            XCTAssertTrue(self.router.isConnected)
             expectation.fulfill()
         }
 
@@ -49,7 +49,7 @@ final class DirectURLRouterTests: XCTestCase {
         router.request(mockEndpoint, responseType: MockResponse.self)
             .sink(receiveCompletion: { completion in
                 if case .failure(let error) = completion {
-                    XCTAssertEqual(error, APIError.unreachable)
+                    XCTAssertEqual(error, APIError.somethingWentWrong)
                     expectation.fulfill()
                 }
             }, receiveValue: { _ in

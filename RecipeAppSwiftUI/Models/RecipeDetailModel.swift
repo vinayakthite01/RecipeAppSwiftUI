@@ -12,7 +12,7 @@ struct RecipeDetailModel: Codable {
     let meals: [RecipeDetail]
 }
 
-struct RecipeDetail: Codable, Identifiable {
+struct RecipeDetail: Codable, Identifiable, Equatable {
     let idMeal: String
     let strMeal: String
     let strCategory: String

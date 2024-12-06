@@ -73,7 +73,7 @@ class RecipeListViewModelTests: XCTestCase {
     }
     
     func testFetchRecipes_failure(){
-        let expectation = XCTestExpectation(description: "Fetch all categories failure")
+        let expectation = XCTestExpectation(description: "Fetch all recipes failure")
 
         let mockAPIService = MockAPIService()
         mockAPIService.recipesListResult = .failure(APIError.somethingWentWrong)
