@@ -9,6 +9,7 @@ import Foundation
 import Combine
 
 class RecipeListViewModel: ObservableObject {
+    // MARK: - Properties
     @Published var recipes: [Recipe] = []
     @Published var isLoading: Bool = false
     @Published var errorMessage: String?
@@ -16,6 +17,10 @@ class RecipeListViewModel: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
     private let apiService = APIService()
 
+    // MARK: - functions
+    
+    /// Fetch Recipe List for the category
+    /// - Parameter category: category name
     func fetchRecipes(for category: String) {
         isLoading = true
         errorMessage = nil

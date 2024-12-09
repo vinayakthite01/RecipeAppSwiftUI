@@ -9,11 +9,12 @@ import Foundation
 import Combine
 
 class APIService {
-    // Router to call baseURL APIs
+    // MARK: - Properties
     private let recipeRouter: Router<RecipeEndpoint>
     private let directURLRouter: DirectURLRouter<RecipeEndpoint>
     private var cancellables = Set<AnyCancellable>()
     
+    // MARK: - Initialization
     init() {
         self.recipeRouter = Router<RecipeEndpoint>()
         self.directURLRouter = DirectURLRouter<RecipeEndpoint>()

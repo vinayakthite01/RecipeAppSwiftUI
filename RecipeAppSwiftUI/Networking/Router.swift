@@ -9,10 +9,12 @@ import Foundation
 import Combine
 
 class Router<EndPoint: EndPointType> {
-
+    
+    // MARK: - Properties
     @Published var isConnected: Bool = true
     private var cancellables = Set<AnyCancellable>()
     
+    // MARK: - Initialization
     init() {
         NetworkMonitor.shared.isConnectedPublisher
             .receive(on: DispatchQueue.main)
@@ -25,7 +27,7 @@ class Router<EndPoint: EndPointType> {
     /// Reactive API Request
     /// - Parameters:
     ///   - route: End Point
-    ///   - type: Decodable model type
+    ///   - responseType: Decodable model type
     /// - Returns: A publisher that emits the decoded model or an APIError
     func request<T: Decodable>(_ route: EndPoint, responseType: T.Type) -> AnyPublisher<T, APIError> {
         // Check if network is connected

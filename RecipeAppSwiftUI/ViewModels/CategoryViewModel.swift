@@ -9,13 +9,17 @@ import Foundation
 import Combine
 
 class CategoriesViewModel: ObservableObject {
+    // MARK: - Properties
     @Published var categories: [Category] = []
     @Published var isLoading: Bool = false
     @Published var errorMessage: String?
 
     private var cancellables = Set<AnyCancellable>()
     var apiService = APIService()
-
+    
+    // MARK: - functions
+    
+    /// Fetch Categoeis
     func fetchCategories() {
         isLoading = true
         errorMessage = nil

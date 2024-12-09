@@ -10,6 +10,7 @@ import Combine
 
 // MARK: - Recipe Detail ViewModel
 class RecipeDetailViewModel: ObservableObject {
+    // MARK: - Properties
     @Published var recipeDetail: RecipeDetail?
     @Published var isLoading: Bool = false
     @Published var errorMessage: String?
@@ -17,6 +18,10 @@ class RecipeDetailViewModel: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
     var apiService = APIService()
 
+    // MARK: - functions
+    
+    /// Fetch Recipes detail
+    /// - Parameter id: id of the recipe
     func fetchRecipeDetail(for id: String) {
         isLoading = true
         errorMessage = nil

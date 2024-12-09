@@ -9,10 +9,11 @@ import Foundation
 import Combine
 
 final class DirectURLRouter<EndPoint: EndPointType> {
-
+    // MARK: - Properties
     @Published var isConnected: Bool = true
     private var cancellables = Set<AnyCancellable>()
     
+    // MARK: - Initialization
     init() {
         NetworkMonitor.shared.isConnectedPublisher
             .receive(on: DispatchQueue.main)

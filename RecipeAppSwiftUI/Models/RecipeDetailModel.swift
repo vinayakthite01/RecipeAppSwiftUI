@@ -8,11 +8,12 @@
 import Foundation
 
 // MARK: - Recipe Detail Model
-struct RecipeDetailModel: Codable {
+struct RecipeDetailModel: Decodable {
     let meals: [RecipeDetail]
 }
 
-struct RecipeDetail: Codable, Identifiable, Equatable {
+// MARK: - Recipe Detail
+struct RecipeDetail: Decodable, Identifiable, Equatable {
     let idMeal: String
     let strMeal: String
     let strCategory: String

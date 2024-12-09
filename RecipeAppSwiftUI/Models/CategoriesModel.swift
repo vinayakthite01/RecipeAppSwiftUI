@@ -6,12 +6,12 @@
 //
 
 import Foundation
-
-struct CategoriesModel: Codable {
+// MARK: - Category Model
+struct CategoriesModel: Decodable {
     let categories: [Category]
 }
-
-struct Category: Codable, Identifiable, Equatable {
+// MARK: - Categories
+struct Category: Decodable, Identifiable, Equatable {
     let idCategory: String
     let strCategory: String
     let strCategoryThumb: String
