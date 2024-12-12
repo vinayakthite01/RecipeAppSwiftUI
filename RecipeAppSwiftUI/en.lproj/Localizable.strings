@@ -1,0 +1,27 @@
+/* 
+  Localizable.strings
+  RecipeAppSwiftUI
+
+  Created by Vinayak Thite on 10/12/24.
+  
+*/
+
+// MARK: - RecipeAppSwiftUI
+
+// Common
+"Common.noDataAvailable" = "No data available.";
+"Common.loading" = "Loading...";
+
+// Categories
+"Categories.title" = "Categories";
+
+// RecipeList
+"RecipeList.title" = "%@ Recipes";
+
+// RecipeDetails
+"RecipeDetails.title" = "Recipe Details";
+"RecipeDetails.category" = "Category";
+"RecipeDetails.cuisine" = "Cuisine";
+"RecipeDetails.tags" = "Tags";
+"RecipeDetails.instructions" = "Instructions";
+"RecipeDetails.watchOnYouTube" = "Watch on YouTube";

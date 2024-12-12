@@ -1,0 +1,12 @@
+//
+//  Debug.xcconfig
+//  RecipeAppSwiftUI
+//
+//  Created by Vinayak Thite on 04/12/24.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+// Base URL
+BASE_URL = themealdb.com
