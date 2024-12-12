@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct RecipeListView: View {
-    @StateObject private var viewModel = RecipeListViewModel()
-    let category: String
+    @ObservedObject var viewModel: RecipeListViewModel
+//    @StateObject var coordinator = RecipeListCoordinator()
+    
+//    let category: String
 
     var body: some View {
         Group {
@@ -38,13 +40,13 @@ struct RecipeListView: View {
                 }
             }
         }
-        .navigationTitle("\(category) Recipes")
+        .navigationTitle("Selected Category Recipes")
         .onAppear {
-            viewModel.fetchRecipes(for: category)
+//            viewModel.fetchRecipes(for: category)
         }
     }
 }
 
-#Preview {
-    CategoriesView()
-}
+//#Preview {
+//    RecipeListView()
+//}

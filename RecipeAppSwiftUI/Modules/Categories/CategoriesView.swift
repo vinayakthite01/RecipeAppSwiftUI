@@ -9,7 +9,8 @@ import SwiftUI
 
 // MARK: - Categories View
 struct CategoriesView: View {
-    @StateObject private var viewModel = CategoriesViewModel()
+    @ObservedObject var viewModel: CategoriesViewModel
+//    @StateObject var coordinator = CategoryCoordinator()
 
     var body: some View {
         NavigationView {
@@ -21,6 +22,29 @@ struct CategoriesView: View {
                         .foregroundColor(.red)
                         .multilineTextAlignment(.center)
                 } else {
+//                    NavigationStack(path: $coordinator.path) {
+//                        List(viewModel.categories) { category in
+//                            Button(action: {
+//                                coordinator.navigateToRecipeList(for: category.strCategory)
+//                            }) {
+//                                Text(category.strCategory)
+//                            }
+//                        }
+//                        .navigationTitle("Categories")
+//                        .onAppear {
+//                            viewModel.fetchCategories()
+//                        }
+//                        .alert(item: $viewModel.error) { error in
+//                            Alert(title: Text("Error"), message: Text(error), dismissButton: .default(Text("OK")))
+//                        }
+//                        .navigationDestination(for: CategoryDestination.self) { destination in
+//                            switch destination {
+//                            case .recipeList(let category):
+//                                let viewModel = RecipeListViewModel(category: category)
+//                                RecipeListView(viewModel: viewModel)
+//                            }
+//                        }
+//                    }
                     List(viewModel.categories) { category in
                         NavigationLink(destination: RecipeListView(category: category.strCategory)) {
                             HStack {
@@ -31,7 +55,7 @@ struct CategoriesView: View {
                                 }
                                 .frame(width: 50, height: 50)
                                 .clipShape(Circle())
-                                
+
                                 VStack(alignment: .leading) {
                                     Text(category.strCategory)
                                         .font(.headline)
@@ -51,7 +75,12 @@ struct CategoriesView: View {
         }
     }
 }
+//
+//extension CategoriesView {
+//    init(viewModel: CategoriesViewModel) {
+//        self.viewModel = viewModel
+//    }
+//}
 
-#Preview {
-    CategoriesView()
-}
+//#Preview {
+//}

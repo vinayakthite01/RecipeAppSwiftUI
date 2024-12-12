@@ -9,8 +9,10 @@ import SwiftUI
 
 // MARK: - Recipe Detail View
 struct RecipeDetailView: View {
-    @StateObject private var viewModel = RecipeDetailViewModel()
-    let recipeID: String
+    @ObservedObject var viewModel: RecipeDetailViewModel
+//    @StateObject var coordinator = RecipeDetailsCoordinator()
+    
+//    let recipeID: String
 
     var body: some View {
         Group {
@@ -69,11 +71,11 @@ struct RecipeDetailView: View {
         }
         .navigationTitle("Recipe Details")
         .onAppear {
-            viewModel.fetchRecipeDetail(for: recipeID)
+//            viewModel.fetchRecipeDetail(for: recipeID)
         }
     }
 }
 
-#Preview {
-    CategoriesView()
-}
+//#Preview {
+//    RecipeDetailView()
+//}

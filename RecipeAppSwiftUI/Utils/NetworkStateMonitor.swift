@@ -9,12 +9,6 @@ import Foundation
 import Network
 import Combine
 
-//protocol NetworkMonitorProtocol {
-//    var isConnectedPublisher: AnyPublisher<Bool, Never> { get set }
-//}
-
-//final class NetworkMonitor: NetworkMonitorProtocol {
-
 final class NetworkMonitor {
     
     static let shared = NetworkMonitor()

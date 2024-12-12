@@ -1,30 +1,35 @@
 //
-//  ViewModels.swift
+//  RecipeListViewModel.swift
 //  RecipeAppSwiftUI
 //
-//  Created by Vinayak Thite on 03/12/24.
+//  Created by Vinayak Thite on 04/12/24.
 //
 
 import Foundation
 import Combine
 
-class CategoriesViewModel: ObservableObject {
+class RecipeListViewModel: ObservableObject {
     // MARK: - Properties
-    @Published var categories: [Category] = []
+    @Published var recipes: [Recipe] = []
     @Published var isLoading: Bool = false
     @Published var errorMessage: String?
 
     private var cancellables = Set<AnyCancellable>()
-    var apiService = APIService()
+    private let apiService: APIServiceProtocol
     
+    init(apiService: APIServiceProtocol) {
+        self.apiService = apiService
+    }
+
     // MARK: - functions
     
-    /// Fetch Categoeis
-    func fetchCategories() {
+    /// Fetch Recipe List for the category
+    /// - Parameter category: category name
+    func fetchRecipes(for category: String) {
         isLoading = true
         errorMessage = nil
-        
-        apiService.fetchAllCategories()
+
+        apiService.fetchRecipes(category: category)
             .sink { [weak self] completion in
                 self?.isLoading = false
                 switch completion {
@@ -33,9 +38,8 @@ class CategoriesViewModel: ObservableObject {
                 case .failure(let apiError):
                     self?.errorMessage = apiError.description
                 }
-            } receiveValue: { [weak self] categories in
-                Logger.log("Category Response: \(categories)")
-                self?.categories = categories
+            } receiveValue: { [weak self] recipes in
+                self?.recipes = recipes
             }
             .store(in: &cancellables)
     }

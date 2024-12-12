@@ -10,15 +10,19 @@ import Combine
 
 // MARK: - Recipe Detail ViewModel
 class RecipeDetailViewModel: ObservableObject {
-    // MARK: - Properties
+    // MARK: - Properties    
     @Published var recipeDetail: RecipeDetail?
     @Published var isLoading: Bool = false
     @Published var errorMessage: String?
 
     private var cancellables = Set<AnyCancellable>()
-    var apiService = APIService()
+    private let apiService: APIServiceProtocol
+    
+    init(apiService: APIServiceProtocol) {
+        self.apiService = apiService
+    }
 
-    // MARK: - functions
+    // MARK: - Functions
     
     /// Fetch Recipes detail
     /// - Parameter id: id of the recipe
@@ -27,7 +31,7 @@ class RecipeDetailViewModel: ObservableObject {
         errorMessage = nil
         
         apiService.fetchRecipe(recipeId: id)
-            .sink { [weak self] completion in
+            .sink {[weak self] completion in
                 self?.isLoading = false
                 switch completion {
                 case .failure(let apiError):

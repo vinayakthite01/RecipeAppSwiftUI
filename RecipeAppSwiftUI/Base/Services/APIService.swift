@@ -8,7 +8,14 @@
 import Foundation
 import Combine
 
-class APIService {
+/// API Service Protocol
+protocol APIServiceProtocol {
+    func fetchAllCategories()  -> AnyPublisher<[Category], APIError>
+    func fetchRecipes(category: String) -> AnyPublisher<[Recipe], APIError>
+    func fetchRecipe(recipeId: String) -> AnyPublisher<[RecipeDetail], APIError>
+}
+
+class APIService: APIServiceProtocol {
     // MARK: - Properties
     private let recipeRouter: Router<RecipeEndpoint>
     private let directURLRouter: DirectURLRouter<RecipeEndpoint>
