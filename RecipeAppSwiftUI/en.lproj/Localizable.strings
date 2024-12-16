@@ -8,6 +8,12 @@
 
 // MARK: - RecipeAppSwiftUI
 
+// Tabbar
+"Tabbar.home.title" = "Home";
+"Tabbar.search.title" = "Search";
+"Tabbar.favorites.title" = "Favorites";
+"Tabbar.settings.title" = "Settings";
+
 // Common
 "Common.noDataAvailable" = "No data available.";
 "Common.loading" = "Loading...";

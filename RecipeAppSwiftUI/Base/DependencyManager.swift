@@ -13,16 +13,16 @@ import Foundation
  */
 protocol DependencyContainerProtocol {
     /// API Manager
-    var apiManager: APIServiceProtocol { get }
+    var apiService: APIServiceProtocol { get }
 }
 
 // MARK: Confirming to Resource Protocol
 struct DependencyContainer: DependencyContainerProtocol {
-    var apiManager: APIServiceProtocol
+    var apiService: APIServiceProtocol
     
     /// Takes all the dependencies object for self initialization
     /// - Parameter apiManager: apiManager
-    init(apiManager: APIServiceProtocol) {
-        self.apiManager = apiManager
+    init() {
+        self.apiService = APIService()
     }
 }

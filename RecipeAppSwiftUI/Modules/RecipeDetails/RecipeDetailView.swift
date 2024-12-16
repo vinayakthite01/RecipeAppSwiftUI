@@ -9,13 +9,21 @@ import SwiftUI
 
 // MARK: - Recipe Detail View
 struct RecipeDetailView: View {
+    let dependencyContainer: DependencyContainerProtocol
+    let recipeID: String
     @ObservedObject var viewModel: RecipeDetailViewModel
-//    @StateObject var coordinator = RecipeDetailsCoordinator()
-    
-//    let recipeID: String
 
+     init(
+        dependencyContainer: DependencyContainerProtocol,
+        recipeID: String
+     ) {
+         self.dependencyContainer = dependencyContainer
+         self.recipeID = recipeID
+         self.viewModel = RecipeDetailViewModel(apiService: dependencyContainer.apiService)
+     }
+    
     var body: some View {
-        Group {
+        VStack {
             if viewModel.isLoading {
                 ProgressView("Loading...")
             } else if let errorMessage = viewModel.errorMessage {
@@ -71,11 +79,7 @@ struct RecipeDetailView: View {
         }
         .navigationTitle("Recipe Details")
         .onAppear {
-//            viewModel.fetchRecipeDetail(for: recipeID)
+            viewModel.fetchRecipeDetail(for: recipeID)
         }
     }
 }
-
-//#Preview {
-//    RecipeDetailView()
-//}

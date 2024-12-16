@@ -20,6 +20,6 @@ struct RecipeListBuilder {
     
     func buildRecipeList() -> some View {
         let viewModel = RecipeListViewModel(apiService: self.apiService)
-        return RecipeListView(viewModel: viewModel)
+        return RecipeListView(viewModel: viewModel, category: self.category)
     }
 }

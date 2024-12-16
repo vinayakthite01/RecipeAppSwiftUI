@@ -8,13 +8,21 @@
 import SwiftUI
 
 struct RecipeListView: View {
+    let dependencyContainer: DependencyContainerProtocol
     @ObservedObject var viewModel: RecipeListViewModel
-//    @StateObject var coordinator = RecipeListCoordinator()
-    
-//    let category: String
+    let category: String
 
+     init(
+        dependencyContainer: DependencyContainerProtocol,
+        category: String
+     ) {
+         self.dependencyContainer = dependencyContainer
+         self.category = category
+         self.viewModel = RecipeListViewModel(apiService: dependencyContainer.apiService)
+     }
+    
     var body: some View {
-        Group {
+        VStack {
             if viewModel.isLoading {
                 ProgressView("Loading...")
             } else if let errorMessage = viewModel.errorMessage {
@@ -23,7 +31,7 @@ struct RecipeListView: View {
                     .multilineTextAlignment(.center)
             } else {
                 List(viewModel.recipes) { recipe in
-                    NavigationLink(destination: RecipeDetailView(recipeID: recipe.idMeal)) {
+                    NavigationLink(destination: RecipeDetailView(dependencyContainer: dependencyContainer, recipeID: recipe.idMeal)) {
                         HStack {
                             AsyncImage(url: URL(string: recipe.strMealThumb)) { image in
                                 image.resizable()
@@ -40,13 +48,9 @@ struct RecipeListView: View {
                 }
             }
         }
-        .navigationTitle("Selected Category Recipes")
+        .navigationTitle("Category \(category)")
         .onAppear {
-//            viewModel.fetchRecipes(for: category)
+            viewModel.fetchRecipes(for: category)
         }
     }
 }
-
-//#Preview {
-//    RecipeListView()
-//}

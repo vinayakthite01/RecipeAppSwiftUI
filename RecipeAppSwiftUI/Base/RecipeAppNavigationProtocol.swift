@@ -6,9 +6,23 @@
 //
 
 import Foundation
+import SwiftUI
+import Combine
 
-enum NavigationDestinations: String, CaseIterable, Hashable {
-    case Category
-    case RecipeList
-    case RecipeDetails
+enum NavigationDestinations: Hashable, View {
+    
+    case category
+    case RecipeList(categoryName: String)
+    case RecipeDetails(recipeId: String)
+    
+    var body: some View {
+        switch self {
+        case .category:
+            CategoriesView(dependencyContainer: DependencyContainer())
+        case .RecipeList(categoryName: let categoryName):
+            RecipeListView(dependencyContainer: DependencyContainer(), category: categoryName)
+        case .RecipeDetails(recipeId: let recipeId):
+            RecipeDetailView(dependencyContainer: DependencyContainer(), recipeID: recipeId)
+        }
+    }
 }

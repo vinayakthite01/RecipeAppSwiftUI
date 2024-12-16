@@ -10,19 +10,11 @@ import Combine
 
 @main
 struct RecipeAppSwiftUIApp: App {
-    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-    
+
+    let dependency = DependencyContainer()
     var body: some Scene {
         WindowGroup {
-            MainTabView()
+            MainTabView(dependency: dependency)
         }
-    }
-}
-
-class AppDelegate: UIResponder, UIApplicationDelegate {
-    var window: UIWindow?
-    
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        return true
     }
 }

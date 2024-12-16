@@ -16,8 +16,7 @@ class CategoriesViewModel: ObservableObject {
     @Published var errorMessage: String?
 
     private var cancellables = Set<AnyCancellable>()
-    private let apiService: APIServiceProtocol
-    private var selectedCategory: String?
+    let apiService: APIServiceProtocol
     
     init(apiService: APIServiceProtocol) {
         self.apiService = apiService
@@ -44,14 +43,5 @@ class CategoriesViewModel: ObservableObject {
                 self?.categories = categories
             }
             .store(in: &cancellables)
-    }
-    
-    func selectedCategory(index: Int) {
-        selectedCategory = categories[index].strCategory
-    }
-    
-    var buildRecipeList: some View {
-        let recipeListBuilder = RecipeListBuilder(apiService: apiService, category: selectedCategory)
-        return recipeListBuilder.buildRecipeList()
     }
 }

@@ -15,6 +15,7 @@ struct RecipeBuilder {
     
     init(apiService: APIServiceProtocol, recipeId: String) {
         self.apiService = apiService
+        self.recipeId = recipeId
     }
     
     func buildRecipeDetail() -> some View {

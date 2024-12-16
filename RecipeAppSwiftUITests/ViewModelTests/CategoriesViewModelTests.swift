@@ -12,14 +12,14 @@ import Combine
 class CategoriesViewModelTests: XCTestCase {
     
     var viewModel: CategoriesViewModel!
-    var mockAPIService: MockAPIService!
+    var mockAPIService: APIServiceProtocol?
     var cancellables: Set<AnyCancellable>!
 
     override func setUp() {
         super.setUp()
         mockAPIService = MockAPIService()
         viewModel = CategoriesViewModel()
-        viewModel.apiService = MockAPIService() // Inject mock API service
+        viewModel.apiService = mockAPIService // Inject mock API service
         cancellables = []
     }
 
@@ -33,7 +33,6 @@ class CategoriesViewModelTests: XCTestCase {
     func testFetchCategories_success() {
         let expectation = XCTestExpectation(description: "Fetch categories successfully")
 
-        let mockAPIService = MockAPIService()
         mockAPIService.categoriesResult = .success([RecipeAppSwiftUI.Category(
             idCategory: "3",
             strCategory: "Dessert",
@@ -59,7 +58,6 @@ class CategoriesViewModelTests: XCTestCase {
     func testFetchAllCategories_failure() {
         let expectation = XCTestExpectation(description: "Fetch all categories failure")
 
-        let mockAPIService = MockAPIService()
         mockAPIService.categoriesResult = .failure(APIError.somethingWentWrong)
 
         mockAPIService.fetchAllCategories()

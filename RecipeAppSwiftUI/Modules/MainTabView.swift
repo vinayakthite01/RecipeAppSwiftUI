@@ -9,10 +9,10 @@ import SwiftUI
 
 // MARK: - MainTabView
 struct MainTabView: View {
+    let dependency: DependencyContainerProtocol
     var body: some View {
         TabView {
-            let categoriesBuilder = CategoriesBuilder(apiService: APIService())
-            categoriesBuilder.build()
+            CategoriesView(dependencyContainer: dependency)
                 .tabItem {
                     Label("Home", systemImage: "house")
                 }
@@ -32,5 +32,11 @@ struct MainTabView: View {
                     Label("Settings", systemImage: "gear")
                 }
         }
+    }
+}
+
+struct TabbarView_Previews: PreviewProvider {
+    static var previews: some View {
+        MainTabView(dependency: DependencyContainer())
     }
 }
