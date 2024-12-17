@@ -14,15 +14,20 @@ import Foundation
 protocol DependencyContainerProtocol {
     /// API Manager
     var apiService: APIServiceProtocol { get }
+    var coredataService: CoreDataServiceProtocol { get }
 }
 
 // MARK: Confirming to Resource Protocol
+
+/// Dependency Container to initialise all the dependencies at once
 struct DependencyContainer: DependencyContainerProtocol {
     var apiService: APIServiceProtocol
+    var coredataService: CoreDataServiceProtocol
     
     /// Takes all the dependencies object for self initialization
-    /// - Parameter apiManager: apiManager
     init() {
         self.apiService = APIService()
+        self.coredataService = CoreDataService.shared
+        coredataService.whereIsMySQLite()
     }
 }

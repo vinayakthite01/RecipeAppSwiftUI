@@ -1,21 +1,20 @@
 //
-//  LoginView.swift
+//  Registration.swift
 //  RecipeAppSwiftUI
 //
-//  Created by Vinayak Thite on 12/12/24.
+//  Created by Vinayak Thite on 16/12/24.
 //
 
 import SwiftUI
-import CoreData
 
-struct LoginView: View {
+struct RegistrationView: View {
     let dependencyContainer: DependencyContainerProtocol
-    @ObservedObject private var viewModel: LoginViewModel
+    @ObservedObject private var viewModel: RegistrationViewModel
     @State private var showMainTabView: Bool = false
     
     init(dependencyContainer: DependencyContainerProtocol) {
         self.dependencyContainer = dependencyContainer
-        viewModel = LoginViewModel(coredataService: dependencyContainer.coredataService)
+        viewModel = RegistrationViewModel(coredataService: dependencyContainer.coredataService)
     }
     
     var body: some View {
@@ -33,12 +32,9 @@ struct LoginView: View {
             }
             
             Button(action: {
-                viewModel.login()
-                if viewModel.isAuthenticated {
-                    showMainTabView = true
-                }
+                viewModel.register()
             }) {
-                Text("Login")
+                Text("Register")
                     .padding()
                     .background(Color.blue)
                     .foregroundColor(.white)
@@ -46,8 +42,5 @@ struct LoginView: View {
             }
         }
         .padding()
-        .fullScreenCover(isPresented: $showMainTabView) {
-            MainTabView(dependency: dependencyContainer)
-        }
     }
 }

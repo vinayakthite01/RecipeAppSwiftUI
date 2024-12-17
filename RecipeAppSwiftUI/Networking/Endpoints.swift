@@ -28,7 +28,7 @@ extension RecipeEndpoint: EndPointType {
     
     /// base URL
     var baseURL: String {
-        return Environment.baseURL
+        return EnvironmentData.baseURL
     }
 
     /// path component

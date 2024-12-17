@@ -55,6 +55,9 @@
 		F3BA8E272D0C3C6700E24A06 /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BA8E262D0C3C6700E24A06 /* CoreDataService.swift */; };
 		F3BA8E2A2D0C3C9400E24A06 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BA8E292D0C3C9400E24A06 /* LoginView.swift */; };
 		F3BA8E2C2D0C74D400E24A06 /* UIView+Extenion.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BA8E2B2D0C74BA00E24A06 /* UIView+Extenion.swift */; };
+		F3BA8E692D1010FA00E24A06 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BA8E682D1010F300E24A06 /* RegistrationView.swift */; };
+		F3BA8E6C2D10111500E24A06 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BA8E6B2D10110D00E24A06 /* RegistrationViewModel.swift */; };
+		F3BA8E6E2D1011A800E24A06 /* AppEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BA8E6D2D1011A200E24A06 /* AppEntryView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -129,6 +132,9 @@
 		F3BA8E262D0C3C6700E24A06 /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
 		F3BA8E292D0C3C9400E24A06 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		F3BA8E2B2D0C74BA00E24A06 /* UIView+Extenion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extenion.swift"; sourceTree = "<group>"; };
+		F3BA8E682D1010F300E24A06 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
+		F3BA8E6B2D10110D00E24A06 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
+		F3BA8E6D2D1011A200E24A06 /* AppEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEntryView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -342,6 +348,7 @@
 			isa = PBXGroup;
 			children = (
 				F38E76BE2CFF0617005756A5 /* RecipeAppSwiftUIApp.swift */,
+				F3BA8E6D2D1011A200E24A06 /* AppEntryView.swift */,
 				F368037D2D096A8F00DA7EC1 /* Base */,
 				F36803382D00C14A00DA7EC1 /* Utils */,
 				F368033B2D00C9CE00DA7EC1 /* Extension */,
@@ -389,6 +396,7 @@
 			isa = PBXGroup;
 			children = (
 				F368042C2D0A5B8000DA7EC1 /* MainTabView.swift */,
+				F3BA8E6A2D10110000E24A06 /* Registration */,
 				F36804422D0ACD8700DA7EC1 /* LoginView */,
 				F368043F2D0ABD4B00DA7EC1 /* SettingsView */,
 				F368043C2D0ABCDC00DA7EC1 /* FavoritesView */,
@@ -398,6 +406,15 @@
 				F368036B2D02FE2000DA7EC1 /* RecipeDetails */,
 			);
 			path = Modules;
+			sourceTree = "<group>";
+		};
+		F3BA8E6A2D10110000E24A06 /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+				F3BA8E682D1010F300E24A06 /* RegistrationView.swift */,
+				F3BA8E6B2D10110D00E24A06 /* RegistrationViewModel.swift */,
+			);
+			path = Registration;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -532,7 +549,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				F3BA8E272D0C3C6700E24A06 /* CoreDataService.swift in Sources */,
+				F3BA8E6C2D10111500E24A06 /* RegistrationViewModel.swift in Sources */,
+				F3BA8E692D1010FA00E24A06 /* RegistrationView.swift in Sources */,
 				F368037C2D096A7E00DA7EC1 /* RecipeAppNavigationProtocol.swift in Sources */,
+				F3BA8E6E2D1011A800E24A06 /* AppEntryView.swift in Sources */,
 				F36803372D00C13B00DA7EC1 /* Logger.swift in Sources */,
 				F38E76E92CFF16B4005756A5 /* CategoriesModel.swift in Sources */,
 				F36803222D008A5500DA7EC1 /* RecipeDetailViewModel.swift in Sources */,

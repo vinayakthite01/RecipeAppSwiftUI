@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum Environment {
+public enum EnvironmentData {
     // MARK: - Keys
     enum Keys {
         enum Plist {
@@ -25,7 +25,7 @@ public enum Environment {
     
     // MARK: - Plist values
     static let baseURL: String = {
-        guard let baseURLString = Environment.infoDictionary[Keys.Plist.baseURL] as? String,
+        guard let baseURLString = EnvironmentData.infoDictionary[Keys.Plist.baseURL] as? String,
               baseURLString.count > 0 else {
             fatalError("*** Server URL not set in plist for this environment ***")
         }

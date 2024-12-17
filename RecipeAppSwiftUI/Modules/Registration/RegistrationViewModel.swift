@@ -1,18 +1,17 @@
 //
-//  LoginViewModel.swift
+//  RegistrationViewModel.swift
 //  RecipeAppSwiftUI
 //
-//  Created by Vinayak Thite on 10/12/24.
+//  Created by Vinayak Thite on 16/12/24.
 //
 
 import Foundation
 import CoreData
 
-class LoginViewModel: ObservableObject {
+class RegistrationViewModel: ObservableObject {
     @Published var username: String = ""
     @Published var password: String = ""
     @Published var errorMessage: String?
-    @Published var isAuthenticated: Bool = false
     @Published var isLoading: Bool = false
     
     private let coreDataService: CoreDataServiceProtocol
@@ -21,27 +20,19 @@ class LoginViewModel: ObservableObject {
         self.coreDataService = coredataService
     }
     
-    func login() {
+    func register() {
         isLoading = true
-        coreDataService.fetchUser(username: username, password: password)
+        coreDataService.saveUser(User(id: UUID(), username: username, password: password, profileImage: nil))
             .sink { [weak self] completion in
                 self?.isLoading = false
                 switch completion {
                 case.failure(let error):
                     self?.errorMessage = error.localizedDescription
                 case.finished:
-                    Logger.log("Finished fetching the user")
                     break
                 }
-            } receiveValue: { [weak self] user in
-                guard let userName = user?.username else {
-                    Logger.log("user not found!")
-                    self?.isAuthenticated = false
-                    return
-                }
-                self?.username = userName
-                Logger.log("userName: \(userName)")
-                self?.isAuthenticated = true
+            } receiveValue: { _ in
+                Logger.log("User registered successfully")
             }
     }
 }

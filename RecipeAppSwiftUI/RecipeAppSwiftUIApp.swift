@@ -11,10 +11,10 @@ import Combine
 @main
 struct RecipeAppSwiftUIApp: App {
 
-    let dependency = DependencyContainer()
+    let dependencyContainer = DependencyContainer()
     var body: some Scene {
         WindowGroup {
-            MainTabView(dependency: dependency)
+            AppEntryView(dependencyContainer: dependencyContainer)
         }
     }
 }

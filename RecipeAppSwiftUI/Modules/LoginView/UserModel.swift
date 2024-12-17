@@ -6,9 +6,11 @@
 //
 
 import Foundation
+import CoreData
 
 struct User: Codable {
     let id: UUID
     let username: String
-    let profileImage: Data
+    let password: String
+    let profileImage: Data?
 }
