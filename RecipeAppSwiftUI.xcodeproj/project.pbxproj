@@ -58,6 +58,7 @@
 		F3BA8E692D1010FA00E24A06 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BA8E682D1010F300E24A06 /* RegistrationView.swift */; };
 		F3BA8E6C2D10111500E24A06 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BA8E6B2D10110D00E24A06 /* RegistrationViewModel.swift */; };
 		F3BA8E6E2D1011A800E24A06 /* AppEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BA8E6D2D1011A200E24A06 /* AppEntryView.swift */; };
+		F3BA8E702D11834A00E24A06 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BA8E6F2D11834200E24A06 /* SearchViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -135,6 +136,7 @@
 		F3BA8E682D1010F300E24A06 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		F3BA8E6B2D10110D00E24A06 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 		F3BA8E6D2D1011A200E24A06 /* AppEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEntryView.swift; sourceTree = "<group>"; };
+		F3BA8E6F2D11834200E24A06 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -294,6 +296,7 @@
 			isa = PBXGroup;
 			children = (
 				F36804372D0ABCAE00DA7EC1 /* SearchView.swift */,
+				F3BA8E6F2D11834200E24A06 /* SearchViewModel.swift */,
 			);
 			path = SearchView;
 			sourceTree = "<group>";
@@ -503,6 +506,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"mr-IN",
 			);
 			mainGroup = F38E76B22CFF0617005756A5;
 			productRefGroup = F38E76BC2CFF0617005756A5 /* Products */;
@@ -554,6 +558,7 @@
 				F368037C2D096A7E00DA7EC1 /* RecipeAppNavigationProtocol.swift in Sources */,
 				F3BA8E6E2D1011A800E24A06 /* AppEntryView.swift in Sources */,
 				F36803372D00C13B00DA7EC1 /* Logger.swift in Sources */,
+				F3BA8E702D11834A00E24A06 /* SearchViewModel.swift in Sources */,
 				F38E76E92CFF16B4005756A5 /* CategoriesModel.swift in Sources */,
 				F36803222D008A5500DA7EC1 /* RecipeDetailViewModel.swift in Sources */,
 				F38E76EF2CFF1829005756A5 /* CategoriesView.swift in Sources */,
@@ -646,6 +651,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -710,6 +716,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";

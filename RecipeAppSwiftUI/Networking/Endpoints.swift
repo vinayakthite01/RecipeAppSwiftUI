@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// RecipeEndpoint
 enum RecipeEndpoint {
     /// get recipe Category
     case getCategories
@@ -16,6 +17,9 @@ enum RecipeEndpoint {
     
     /// get Recipe Detail
     case getRecipeDetail(recipeId: String)
+    
+    /// search recipe by query
+    case searchRecipe(query: String)
 }
 
 extension RecipeEndpoint: EndPointType {
@@ -41,6 +45,8 @@ extension RecipeEndpoint: EndPointType {
             finalPath = "/api/json/v1/1/filter.php?c=\(category)"
         case .getRecipeDetail(let recipeId):
             finalPath = "/api/json/v1/1/lookup.php?i=\(recipeId)"
+        case .searchRecipe(let query):
+            finalPath = "/api/json/v1/1/search.php?f=\(query)"
         }
         return  finalPath
     }
@@ -48,7 +54,7 @@ extension RecipeEndpoint: EndPointType {
     /// request method type
     var httpMethod: HTTPMethod {
         switch self {
-        case .getCategories, .getRecipeList, .getRecipeDetail:
+        case .getCategories, .getRecipeList, .getRecipeDetail, .searchRecipe:
             return .get
         }
     }
@@ -59,7 +65,7 @@ extension RecipeEndpoint: EndPointType {
     /// data (body) passing as params
     var data: Data? {
         switch self {
-        case .getCategories, .getRecipeList, .getRecipeDetail:
+        case .getCategories, .getRecipeList, .getRecipeDetail, .searchRecipe:
             return nil
         }
     }

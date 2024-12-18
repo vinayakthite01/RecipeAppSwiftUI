@@ -10,9 +10,25 @@ import Combine
 
 /// API Service Protocol
 protocol APIServiceProtocol {
+    
+    /// Fetch all categories
+    /// - Returns: Categories Array or Error
     func fetchAllCategories()  -> AnyPublisher<[Category], APIError>
+    
+    /// Fetch all recipes by its category
+    /// - Parameter category: category name
+    /// - Returns: List of Recipes or Error
     func fetchRecipes(category: String) -> AnyPublisher<[Recipe], APIError>
+    
+    /// Fetch all recipes by its recipe id
+    /// - Parameter recipeId: recipe id
+    /// - Returns: Recipe Details or Error
     func fetchRecipe(recipeId: String) -> AnyPublisher<[RecipeDetail], APIError>
+    
+    /// Search Recipe by query
+    /// - Parameter query: query
+    /// - Returns: List of Recipes or Error
+    func searchRecipe(query: String) -> AnyPublisher<[RecipeDetail], APIError>
 }
 
 class APIService: APIServiceProtocol {
@@ -41,6 +57,12 @@ class APIService: APIServiceProtocol {
     
     func fetchRecipe(recipeId: String) -> AnyPublisher<[RecipeDetail], APIError> {
         directURLRouter.request(.getRecipeDetail(recipeId: recipeId), responseType: RecipeDetailModel.self)
+            .map(\.meals)
+            .eraseToAnyPublisher()
+    }
+    
+    func searchRecipe(query: String) -> AnyPublisher<[RecipeDetail], APIError> {
+        directURLRouter.request(.searchRecipe(query: query), responseType: RecipeDetailModel.self)
             .map(\.meals)
             .eraseToAnyPublisher()
     }

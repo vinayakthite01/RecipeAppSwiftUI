@@ -61,7 +61,7 @@ struct RecipeDetailView: View {
                         Text("Instructions")
                             .font(.headline)
 
-                        Text(recipeDetail.strInstructions)
+                        Text(recipeDetail.strInstructions ?? "Recipe Instructions")
                             .font(.body)
 
                         if let youtubeLink = recipeDetail.strYoutube, !youtubeLink.isEmpty {

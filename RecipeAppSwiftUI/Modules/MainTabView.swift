@@ -17,7 +17,7 @@ struct MainTabView: View {
                     Label("Home", systemImage: "house")
                 }
 
-            SearchView()
+            SearchView(dependencyContainer: dependency)
                 .tabItem {
                     Label("Search", systemImage: "magnifyingglass")
                 }

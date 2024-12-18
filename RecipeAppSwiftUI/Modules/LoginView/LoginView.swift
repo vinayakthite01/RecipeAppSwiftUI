@@ -21,10 +21,12 @@ struct LoginView: View {
     var body: some View {
         VStack {
             TextField("Username", text: $viewModel.username)
+                .autocapitalization(.none)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding()
             
             SecureField("Password", text: $viewModel.password)
+                .autocapitalization(.none)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding()
             

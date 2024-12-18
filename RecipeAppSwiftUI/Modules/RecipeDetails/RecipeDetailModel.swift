@@ -25,4 +25,3 @@ struct RecipeDetail: Decodable, Identifiable, Equatable {
 
     var id: String { idMeal }
 }
-
