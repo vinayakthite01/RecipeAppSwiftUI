@@ -63,6 +63,7 @@
 		F3BA8EBB2D148A7300E24A06 /* MapViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BA8EBA2D148A6C00E24A06 /* MapViewCoordinator.swift */; };
 		F3BA8EBD2D148D4200E24A06 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BA8EBC2D148D3F00E24A06 /* MapView.swift */; };
 		F3BA8EBF2D148F3800E24A06 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BA8EBE2D148F2C00E24A06 /* ImagePicker.swift */; };
+		F3BA8EC12D1565D600E24A06 /* SavedRecipesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BA8EC02D1565CC00E24A06 /* SavedRecipesViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -145,6 +146,7 @@
 		F3BA8EBA2D148A6C00E24A06 /* MapViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewCoordinator.swift; sourceTree = "<group>"; };
 		F3BA8EBC2D148D3F00E24A06 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		F3BA8EBE2D148F2C00E24A06 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		F3BA8EC02D1565CC00E24A06 /* SavedRecipesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedRecipesViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -313,6 +315,7 @@
 			isa = PBXGroup;
 			children = (
 				F368043A2D0ABCD200DA7EC1 /* SavedRecipesView.swift */,
+				F3BA8EC02D1565CC00E24A06 /* SavedRecipesViewModel.swift */,
 			);
 			path = SavedRecipesView;
 			sourceTree = "<group>";
@@ -597,6 +600,7 @@
 				F36804442D0ACDA000DA7EC1 /* LoginViewModel.swift in Sources */,
 				F36803182D0083CA00DA7EC1 /* RecipeListView.swift in Sources */,
 				F36804362D0A5EA700DA7EC1 /* DataModel.xcdatamodeld in Sources */,
+				F3BA8EC12D1565D600E24A06 /* SavedRecipesViewModel.swift in Sources */,
 				F368031C2D00843000DA7EC1 /* RecipeListModel.swift in Sources */,
 				F38E76BF2CFF0617005756A5 /* RecipeAppSwiftUIApp.swift in Sources */,
 				F368033A2D00C9C500DA7EC1 /* DateFormatter+Extension.swift in Sources */,

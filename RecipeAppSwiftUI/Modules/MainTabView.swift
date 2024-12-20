@@ -22,12 +22,11 @@ struct MainTabView: View {
                 .tabItem {
                     Label("Home", systemImage: "house")
                 }
-            
             SearchView(dependencyContainer: dependency)
                 .tabItem {
                     Label("Search", systemImage: "magnifyingglass")
                 }
-            SavedRecipesView()
+            SavedRecipesView(dependencyContainer: dependency)
                 .tabItem {
                     Label("Saved", systemImage: "heart")
                 }
