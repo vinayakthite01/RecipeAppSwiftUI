@@ -11,7 +11,7 @@ struct CategoriesModel: Decodable {
     let categories: [Category]
 }
 // MARK: - Categories
-struct Category: Decodable, Identifiable, Equatable {
+struct Category: Decodable, Hashable, Identifiable, Equatable {
     let idCategory: String
     let strCategory: String
     let strCategoryThumb: String
