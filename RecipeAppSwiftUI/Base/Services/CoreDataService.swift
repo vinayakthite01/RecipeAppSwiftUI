@@ -12,10 +12,11 @@ import UIKit
 // MARK: - CoreDataService
 protocol CoreDataServiceProtocol {
     func whereIsMySQLite()
-    func saveFavoriteRecipe(_ recipe: Recipe) -> Future<Void, Error>
-    func fetchFavoriteRecipes() -> Future<[Recipe], Error>
+    func saveRecipe(_ recipe: RecipeDetail, rating: Int, isFavorite: Bool) -> Future<Void, Error>
+    func fetchSavedRecipes() -> Future<[Recipe], Error>
     func saveUser(_ user: User) -> Future<Void, Error>
-    func fetchUser(username: String, password: String) -> Future<User?, Error>
+    func validateUser(username: String, password: String) -> Future<User?, Error>
+    func fetchUserDetails(username: String) -> Future<User?, Error>
 }
 
 // MARK: - CoreData Service
@@ -63,23 +64,26 @@ class CoreDataService: CoreDataServiceProtocol {
     }
     
     /// Save Favorite Recipe
-    /// - Parameter recipe: recipe model
+    /// - Parameter recipe: recipeDetail model
+    /// - Parameter rating: rating given by user
+    /// - Parameter isFavorite: favorite toggle
     /// - Returns: completion
-    func saveFavoriteRecipe(_ recipe: Recipe) -> Future<Void, Error> {
+    func saveRecipe(_ recipe: RecipeDetail, rating: Int, isFavorite: Bool) -> Future<Void, Error> {
         return Future { promise in
             let favoriteRecipe = FavoriteRecipe(context: self.context)
             favoriteRecipe.id = recipe.idMeal
             favoriteRecipe.name = recipe.strMeal
             favoriteRecipe.image = recipe.strMealThumb
+            favoriteRecipe.rating = Int64(rating)
             
             self.saveContext()
             promise(.success(()))
         }
     }
     
-    /// Fetch Favorite Recipe
+    /// Fetch saved Recipe
     /// - Returns: Future Recipe
-    func fetchFavoriteRecipes() -> Future<[Recipe], Error> {
+    func fetchSavedRecipes() -> Future<[Recipe], Error> {
         return Future { promise in
             let fetchRequest: NSFetchRequest<FavoriteRecipe> = FavoriteRecipe.fetchRequest()
             
@@ -109,11 +113,11 @@ class CoreDataService: CoreDataServiceProtocol {
         }
     }
     
-    /// Fetch User Details
+    /// Validate User Detail for login
     /// - Parameter username: username
     /// - Parameter password: password
     /// - Returns: Future user
-    func fetchUser(username: String, password: String) -> Future<User?, Error> {
+    func validateUser(username: String, password: String) -> Future<User?, Error> {
         return Future { promise in
             let fetchRequest: NSFetchRequest<UserEntity> = UserEntity.fetchRequest()
             fetchRequest.predicate = NSPredicate(format: "username == %@ AND password == %@", username, password)
@@ -125,6 +129,33 @@ class CoreDataService: CoreDataServiceProtocol {
                         id: userEntity.id ?? UUID(),
                         username: userEntity.username ?? "",
                         password: userEntity.password ?? "",
+                        profileImage: userEntity.profileImage ?? Data()
+                    )
+                    Logger.log("user: \(user)")
+                    promise(.success(user))
+                } else {
+                    Logger.log("user returned as nil")
+                    promise(.success(nil))
+                }
+            } catch {
+                Logger.log("error: \(error.localizedDescription)")
+                promise(.failure(error))
+            }
+        }
+    }
+    
+    func fetchUserDetails(username: String) -> Future<User?, Error> {
+        return Future { promise in
+            let fetchRequest: NSFetchRequest<UserEntity> = UserEntity.fetchRequest()
+            fetchRequest.predicate = NSPredicate(format: "username == %@", username)
+            do {
+                let userEntities = try self.context.fetch(fetchRequest)
+                Logger.log("userEntities: \(userEntities)")
+                if let userEntity = userEntities.first {
+                    let user = User(
+                        id: userEntity.id ?? UUID(),
+                        username: userEntity.username ?? "",
+                        password: "",
                         profileImage: userEntity.profileImage ?? Data()
                     )
                     Logger.log("user: \(user)")

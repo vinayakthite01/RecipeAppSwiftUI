@@ -1,5 +1,5 @@
 //
-//  FavoritesView.swift
+//  SavedRecipesView.swift
 //  RecipeAppSwiftUI
 //
 //  Created by Vinayak Thite on 10/12/24.
@@ -7,12 +7,12 @@
 
 import SwiftUI
 
-struct FavoritesView: View {
+struct SavedRecipesView: View {
     var body: some View {
-        Text("Favorite Recipes")
+        Text("Saved Recipes")
     }
 }
 
 #Preview {
-    FavoritesView()
+    SavedRecipesView()
 }

@@ -13,15 +13,18 @@ struct RecipeDetailView: View {
     let recipeID: String
     @ObservedObject var viewModel: RecipeDetailViewModel
 
-     init(
+    init(
         dependencyContainer: DependencyContainerProtocol,
         recipeID: String
-     ) {
-         self.dependencyContainer = dependencyContainer
-         self.recipeID = recipeID
-         self.viewModel = RecipeDetailViewModel(apiService: dependencyContainer.apiService)
-     }
-    
+    ) {
+        self.dependencyContainer = dependencyContainer
+        self.recipeID = recipeID
+        self.viewModel = RecipeDetailViewModel(
+            apiService: dependencyContainer.apiService,
+            coredataService: dependencyContainer.coredataService
+        )
+    }
+
     var body: some View {
         VStack {
             if viewModel.isLoading {
@@ -61,7 +64,7 @@ struct RecipeDetailView: View {
                         Text("Instructions")
                             .font(.headline)
 
-                        Text(recipeDetail.strInstructions ?? "Recipe Instructions")
+                        Text(recipeDetail.strInstructions)
                             .font(.body)
 
                         if let youtubeLink = recipeDetail.strYoutube, !youtubeLink.isEmpty {
@@ -70,6 +73,9 @@ struct RecipeDetailView: View {
                                 .font(.headline)
                                 .foregroundColor(.blue)
                         }
+
+                        heartButton
+                        ratingView
                     }
                     .padding()
                 }
@@ -81,5 +87,32 @@ struct RecipeDetailView: View {
         .onAppear {
             viewModel.fetchRecipeDetail(for: recipeID)
         }
+        .onDisappear {
+            viewModel.saveRecipeLocally()
+        }
+    }
+
+    private var heartButton: some View {
+            Button(action: {
+                viewModel.toggleLike()
+            }) {
+                Image(systemName: viewModel.isLiked ? "heart.fill" : "heart")
+                    .foregroundColor(viewModel.isLiked ? .red : .gray)
+                    .font(.largeTitle)
+            }
+            .padding()
+        }
+
+    private var ratingView: some View {
+        HStack {
+            ForEach(1..<6) { star in
+                Image(systemName: star <= viewModel.rating ? "star.fill" : "star")
+                    .foregroundColor(star <= viewModel.rating ? .yellow : .gray)
+                    .onTapGesture {
+                        viewModel.rating = Int(star)
+                    }
+            }
+        }
+        .padding()
     }
 }

@@ -30,16 +30,20 @@ struct SearchView: View {
                         .foregroundColor(.red)
                 } else {
                     if let recipes = viewModel.recipes {
-                        List(recipes) { meal in
-                            HStack {
-                                AsyncImage(url: URL(string: meal.strMealThumb)) { image in
-                                    image.resizable()
-                                        .aspectRatio(contentMode: .fit)
-                                        .frame(width: 50, height: 50)
-                                } placeholder: {
-                                    ProgressView()
+                        List(recipes) { recipe in
+                            NavigationLink(destination: RecipeDetailView(dependencyContainer: dependencyContainer, recipeID: recipe.idMeal)) {
+                                HStack {
+                                    AsyncImage(url: URL(string: recipe.strMealThumb)) { image in
+                                        image.resizable()
+                                    } placeholder: {
+                                        ProgressView()
+                                    }
+                                    .frame(width: 50, height: 50)
+                                    .clipShape(Circle())
+
+                                    Text(recipe.strMeal)
+                                        .font(.headline)
                                 }
-                                Text(meal.strMeal)
                             }
                         }
                     } else {

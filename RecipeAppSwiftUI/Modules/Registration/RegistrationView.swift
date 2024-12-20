@@ -44,5 +44,8 @@ struct RegistrationView: View {
             }
         }
         .padding()
+        .fullScreenCover(isPresented: $showMainTabView) {
+            MainTabView(dependency: dependencyContainer)
+        }
     }
 }

@@ -4,5 +4,9 @@
 <dict>
 	<key>BASE_URL</key>
 	<string>$(BASE_URL)</string>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>We need your location to show it on the map.</string>
+    <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+    <string>We need your location to show it on the map.</string>
 </dict>
 </plist>

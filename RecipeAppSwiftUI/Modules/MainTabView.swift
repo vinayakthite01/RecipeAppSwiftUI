@@ -7,29 +7,33 @@
 
 import SwiftUI
 
+enum Tab {
+    case home, search, favorites, settings
+}
+
 // MARK: - MainTabView
 struct MainTabView: View {
     let dependency: DependencyContainerProtocol
+    @State private var selectedTab: Tab = .home
+    
     var body: some View {
         TabView {
             CategoriesView(dependencyContainer: dependency)
                 .tabItem {
                     Label("Home", systemImage: "house")
                 }
-
+            
             SearchView(dependencyContainer: dependency)
                 .tabItem {
                     Label("Search", systemImage: "magnifyingglass")
                 }
-
-            FavoritesView()
+            SavedRecipesView()
                 .tabItem {
-                    Label("Favorites", systemImage: "heart")
+                    Label("Saved", systemImage: "heart")
                 }
-
-            SettingsView()
+            ProfileView(dependencyContainer: dependency)
                 .tabItem {
-                    Label("Settings", systemImage: "gear")
+                    Label("Settings", systemImage: "gearshape")
                 }
         }
     }

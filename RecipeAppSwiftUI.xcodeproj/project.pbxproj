@@ -37,8 +37,7 @@
 		F368042D2D0A5B8000DA7EC1 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F368042C2D0A5B8000DA7EC1 /* MainTabView.swift */; };
 		F36804362D0A5EA700DA7EC1 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F36804342D0A5EA700DA7EC1 /* DataModel.xcdatamodeld */; };
 		F36804382D0ABCAE00DA7EC1 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36804372D0ABCAE00DA7EC1 /* SearchView.swift */; };
-		F368043B2D0ABCD200DA7EC1 /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F368043A2D0ABCD200DA7EC1 /* FavoritesView.swift */; };
-		F368043E2D0ABD2800DA7EC1 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F368043D2D0ABD2800DA7EC1 /* SettingsView.swift */; };
+		F368043B2D0ABCD200DA7EC1 /* SavedRecipesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F368043A2D0ABCD200DA7EC1 /* SavedRecipesView.swift */; };
 		F36804442D0ACDA000DA7EC1 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36804432D0ACDA000DA7EC1 /* LoginViewModel.swift */; };
 		F36804462D0ACDAD00DA7EC1 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36804452D0ACDAD00DA7EC1 /* UserModel.swift */; };
 		F36804482D0B351600DA7EC1 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36804472D0B351600DA7EC1 /* Strings.swift */; };
@@ -59,6 +58,11 @@
 		F3BA8E6C2D10111500E24A06 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BA8E6B2D10110D00E24A06 /* RegistrationViewModel.swift */; };
 		F3BA8E6E2D1011A800E24A06 /* AppEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BA8E6D2D1011A200E24A06 /* AppEntryView.swift */; };
 		F3BA8E702D11834A00E24A06 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BA8E6F2D11834200E24A06 /* SearchViewModel.swift */; };
+		F3BA8E912D14102A00E24A06 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BA8E902D14102600E24A06 /* ProfileViewModel.swift */; };
+		F3BA8E942D14105600E24A06 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BA8E932D14104F00E24A06 /* ProfileView.swift */; };
+		F3BA8EBB2D148A7300E24A06 /* MapViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BA8EBA2D148A6C00E24A06 /* MapViewCoordinator.swift */; };
+		F3BA8EBD2D148D4200E24A06 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BA8EBC2D148D3F00E24A06 /* MapView.swift */; };
+		F3BA8EBF2D148F3800E24A06 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BA8EBE2D148F2C00E24A06 /* ImagePicker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,8 +116,7 @@
 		F368042C2D0A5B8000DA7EC1 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		F36804352D0A5EA700DA7EC1 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		F36804372D0ABCAE00DA7EC1 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
-		F368043A2D0ABCD200DA7EC1 /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
-		F368043D2D0ABD2800DA7EC1 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		F368043A2D0ABCD200DA7EC1 /* SavedRecipesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedRecipesView.swift; sourceTree = "<group>"; };
 		F36804432D0ACDA000DA7EC1 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		F36804452D0ACDAD00DA7EC1 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		F36804472D0B351600DA7EC1 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
@@ -137,6 +140,11 @@
 		F3BA8E6B2D10110D00E24A06 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 		F3BA8E6D2D1011A200E24A06 /* AppEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEntryView.swift; sourceTree = "<group>"; };
 		F3BA8E6F2D11834200E24A06 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		F3BA8E902D14102600E24A06 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		F3BA8E932D14104F00E24A06 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		F3BA8EBA2D148A6C00E24A06 /* MapViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewCoordinator.swift; sourceTree = "<group>"; };
+		F3BA8EBC2D148D3F00E24A06 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		F3BA8EBE2D148F2C00E24A06 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -301,20 +309,12 @@
 			path = SearchView;
 			sourceTree = "<group>";
 		};
-		F368043C2D0ABCDC00DA7EC1 /* FavoritesView */ = {
+		F368043C2D0ABCDC00DA7EC1 /* SavedRecipesView */ = {
 			isa = PBXGroup;
 			children = (
-				F368043A2D0ABCD200DA7EC1 /* FavoritesView.swift */,
+				F368043A2D0ABCD200DA7EC1 /* SavedRecipesView.swift */,
 			);
-			path = FavoritesView;
-			sourceTree = "<group>";
-		};
-		F368043F2D0ABD4B00DA7EC1 /* SettingsView */ = {
-			isa = PBXGroup;
-			children = (
-				F368043D2D0ABD2800DA7EC1 /* SettingsView.swift */,
-			);
-			path = SettingsView;
+			path = SavedRecipesView;
 			sourceTree = "<group>";
 		};
 		F36804422D0ACD8700DA7EC1 /* LoginView */ = {
@@ -401,8 +401,8 @@
 				F368042C2D0A5B8000DA7EC1 /* MainTabView.swift */,
 				F3BA8E6A2D10110000E24A06 /* Registration */,
 				F36804422D0ACD8700DA7EC1 /* LoginView */,
-				F368043F2D0ABD4B00DA7EC1 /* SettingsView */,
-				F368043C2D0ABCDC00DA7EC1 /* FavoritesView */,
+				F3BA8E922D14103A00E24A06 /* Profile */,
+				F368043C2D0ABCDC00DA7EC1 /* SavedRecipesView */,
 				F36804392D0ABCB600DA7EC1 /* SearchView */,
 				F36803692D02FDA000DA7EC1 /* Categories */,
 				F368036A2D02FDB300DA7EC1 /* RecipeList */,
@@ -418,6 +418,18 @@
 				F3BA8E6B2D10110D00E24A06 /* RegistrationViewModel.swift */,
 			);
 			path = Registration;
+			sourceTree = "<group>";
+		};
+		F3BA8E922D14103A00E24A06 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				F3BA8E932D14104F00E24A06 /* ProfileView.swift */,
+				F3BA8E902D14102600E24A06 /* ProfileViewModel.swift */,
+				F3BA8EBE2D148F2C00E24A06 /* ImagePicker.swift */,
+				F3BA8EBC2D148D3F00E24A06 /* MapView.swift */,
+				F3BA8EBA2D148A6C00E24A06 /* MapViewCoordinator.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -556,8 +568,10 @@
 				F3BA8E6C2D10111500E24A06 /* RegistrationViewModel.swift in Sources */,
 				F3BA8E692D1010FA00E24A06 /* RegistrationView.swift in Sources */,
 				F368037C2D096A7E00DA7EC1 /* RecipeAppNavigationProtocol.swift in Sources */,
+				F3BA8EBD2D148D4200E24A06 /* MapView.swift in Sources */,
 				F3BA8E6E2D1011A800E24A06 /* AppEntryView.swift in Sources */,
 				F36803372D00C13B00DA7EC1 /* Logger.swift in Sources */,
+				F3BA8E912D14102A00E24A06 /* ProfileViewModel.swift in Sources */,
 				F3BA8E702D11834A00E24A06 /* SearchViewModel.swift in Sources */,
 				F38E76E92CFF16B4005756A5 /* CategoriesModel.swift in Sources */,
 				F36803222D008A5500DA7EC1 /* RecipeDetailViewModel.swift in Sources */,
@@ -565,8 +579,10 @@
 				F368032D2D00A7FD00DA7EC1 /* RouterHelper.swift in Sources */,
 				F3BA8E2C2D0C74D400E24A06 /* UIView+Extenion.swift in Sources */,
 				F36803202D008A3400DA7EC1 /* RecipeDetailModel.swift in Sources */,
+				F3BA8EBB2D148A7300E24A06 /* MapViewCoordinator.swift in Sources */,
 				F36803332D00B22D00DA7EC1 /* DirectURLRouter.swift in Sources */,
 				F3BA8E2A2D0C3C9400E24A06 /* LoginView.swift in Sources */,
+				F3BA8E942D14105600E24A06 /* ProfileView.swift in Sources */,
 				F38E76F62CFF5702005756A5 /* Environment.swift in Sources */,
 				F36804462D0ACDAD00DA7EC1 /* UserModel.swift in Sources */,
 				F368042D2D0A5B8000DA7EC1 /* MainTabView.swift in Sources */,
@@ -575,8 +591,7 @@
 				F36803462D01CC4300DA7EC1 /* NetworkStateMonitor.swift in Sources */,
 				F368032F2D00AC8F00DA7EC1 /* Router.swift in Sources */,
 				F36803242D008A7000DA7EC1 /* RecipeDetailView.swift in Sources */,
-				F368043E2D0ABD2800DA7EC1 /* SettingsView.swift in Sources */,
-				F368043B2D0ABCD200DA7EC1 /* FavoritesView.swift in Sources */,
+				F368043B2D0ABCD200DA7EC1 /* SavedRecipesView.swift in Sources */,
 				F38E76EC2CFF17DE005756A5 /* CategoriesViewModel.swift in Sources */,
 				F36803352D00B64600DA7EC1 /* Endpoints.swift in Sources */,
 				F36804442D0ACDA000DA7EC1 /* LoginViewModel.swift in Sources */,
@@ -586,6 +601,7 @@
 				F38E76BF2CFF0617005756A5 /* RecipeAppSwiftUIApp.swift in Sources */,
 				F368033A2D00C9C500DA7EC1 /* DateFormatter+Extension.swift in Sources */,
 				F36804382D0ABCAE00DA7EC1 /* SearchView.swift in Sources */,
+				F3BA8EBF2D148F3800E24A06 /* ImagePicker.swift in Sources */,
 				F36803782D0909EF00DA7EC1 /* DependencyManager.swift in Sources */,
 				F368031A2D00840000DA7EC1 /* RecipeListViewModel.swift in Sources */,
 			);

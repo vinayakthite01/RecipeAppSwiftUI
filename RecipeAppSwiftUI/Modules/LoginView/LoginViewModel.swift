@@ -23,7 +23,7 @@ class LoginViewModel: ObservableObject {
     
     func login() {
         isLoading = true
-        coreDataService.fetchUser(username: username, password: password)
+        coreDataService.validateUser(username: username, password: password)
             .sink { [weak self] completion in
                 self?.isLoading = false
                 switch completion {
@@ -36,10 +36,12 @@ class LoginViewModel: ObservableObject {
             } receiveValue: { [weak self] user in
                 guard let userName = user?.username else {
                     Logger.log("user not found!")
+                    self?.errorMessage = "User not found!"
                     self?.isAuthenticated = false
                     return
                 }
                 self?.username = userName
+                UserDefaults.standard.set(userName, forKey: "loggedinUser")
                 Logger.log("userName: \(userName)")
                 self?.isAuthenticated = true
             }
