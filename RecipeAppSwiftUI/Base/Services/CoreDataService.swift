@@ -11,11 +11,37 @@ import UIKit
 
 // MARK: - CoreDataService
 protocol CoreDataServiceProtocol {
+    
+    /// Get path for the database
     func whereIsMySQLite()
+    
+    /// Save Recipes in
+    /// - Parameters:
+    ///   - recipe: recipe
+    ///   - rating: user's rating
+    ///   - isFavorite: favorite flag (true/false)
+    /// - Returns: Void/ Error
     func saveRecipe(_ recipe: RecipeDetail, rating: Int, isFavorite: Bool) -> Future<Void, Error>
+    
+    /// Fetch all Saved Recipes
+    /// - Returns: recipe list
     func fetchSavedRecipes() -> Future<[Recipe], Error>
+    
+    /// Save user details
+    /// - Parameter user: user details
+    /// - Returns: Void/ Error
     func saveUser(_ user: User) -> Future<Void, Error>
+    
+    /// Validate if user is registered
+    /// - Parameters:
+    ///   - username: username
+    ///   - password: password
+    /// - Returns: User/ Error
     func validateUser(username: String, password: String) -> Future<User?, Error>
+    
+    /// Fetch User Details
+    /// - Parameter username: for username
+    /// - Returns: User/ Error
     func fetchUserDetails(username: String) -> Future<User?, Error>
 }
 
@@ -25,6 +51,7 @@ class CoreDataService: CoreDataServiceProtocol {
     
     private init() {}
     
+    /// Persistent Container
     lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "DataModel")
         container.loadPersistentStores { storeDescription, error in
@@ -35,6 +62,7 @@ class CoreDataService: CoreDataServiceProtocol {
         return container
     }()
     
+    /// Context reference
     var context: NSManagedObjectContext {
         return persistentContainer.viewContext
     }
@@ -63,33 +91,27 @@ class CoreDataService: CoreDataServiceProtocol {
         }
     }
     
-    /// Save Favorite Recipe
-    /// - Parameter recipe: recipeDetail model
-    /// - Parameter rating: rating given by user
-    /// - Parameter isFavorite: favorite toggle
-    /// - Returns: completion
     func saveRecipe(_ recipe: RecipeDetail, rating: Int, isFavorite: Bool) -> Future<Void, Error> {
         return Future { promise in
-            let favoriteRecipe = FavoriteRecipe(context: self.context)
-            favoriteRecipe.id = recipe.idMeal
-            favoriteRecipe.name = recipe.strMeal
-            favoriteRecipe.image = recipe.strMealThumb
-            favoriteRecipe.rating = Int64(rating)
+            let savedRecipe = SavedRecipe(context: self.context)
+            savedRecipe.id = recipe.idMeal
+            savedRecipe.name = recipe.strMeal
+            savedRecipe.image = recipe.strMealThumb
+            savedRecipe.isFavorite = recipe.isFavorite ?? false
+            savedRecipe.rating = Int64(rating)
             
             self.saveContext()
             promise(.success(()))
         }
     }
     
-    /// Fetch saved Recipe
-    /// - Returns: Future Recipe
     func fetchSavedRecipes() -> Future<[Recipe], Error> {
         return Future { promise in
-            let fetchRequest: NSFetchRequest<FavoriteRecipe> = FavoriteRecipe.fetchRequest()
+            let fetchRequest: NSFetchRequest<SavedRecipe> = SavedRecipe.fetchRequest()
             
             do {
-                let favoriteRecipes = try self.context.fetch(fetchRequest)
-                let recipes = favoriteRecipes.map { Recipe(idMeal: $0.id ?? "", strMeal: $0.name ?? "", strMealThumb: $0.image ?? "") }
+                let savedRecipes = try self.context.fetch(fetchRequest)
+                let recipes = savedRecipes.map { Recipe(idMeal: $0.id ?? "", strMeal: $0.name ?? "", strMealThumb: $0.image ?? "") }
                 promise(.success(recipes))
             } catch {
                 promise(.failure(error))
@@ -97,9 +119,6 @@ class CoreDataService: CoreDataServiceProtocol {
         }
     }
     
-    /// Save user Details
-    /// - Parameter user: User Description
-    /// - Returns: completion
     func saveUser(_ user: User) -> Future<Void, Error> {
         return Future { promise in
             let userEntity = UserEntity(context: self.context)
@@ -113,10 +132,6 @@ class CoreDataService: CoreDataServiceProtocol {
         }
     }
     
-    /// Validate User Detail for login
-    /// - Parameter username: username
-    /// - Parameter password: password
-    /// - Returns: Future user
     func validateUser(username: String, password: String) -> Future<User?, Error> {
         return Future { promise in
             let fetchRequest: NSFetchRequest<UserEntity> = UserEntity.fetchRequest()

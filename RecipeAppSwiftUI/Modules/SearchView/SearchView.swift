@@ -19,10 +19,19 @@ struct SearchView: View {
     var body: some View {
         NavigationView {
             VStack {
-                TextField("Search for meals", text: $viewModel.searchText)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .padding()
-
+                HStack {
+                    // Search Field
+                    TextField("Search for meals", text: $viewModel.searchText)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .padding()
+                    
+                    // Search Button
+                    Image(systemName: "magnifyingglass")
+                        .font(.title)
+                        .foregroundColor(.secondary)
+                        .padding(.trailing)
+                }
+        
                 if viewModel.isLoading {
                     ProgressView("Loading...")
                 } else if let errorMessage = viewModel.errorMessage {

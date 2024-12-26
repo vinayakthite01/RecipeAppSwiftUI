@@ -22,29 +22,52 @@ struct LoginView: View {
         VStack {
             TextField("Username", text: $viewModel.username)
                 .autocapitalization(.none)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .frame(width: 350, height: 40, alignment: .center)
+                .textFieldStyle(PlainTextFieldStyle())
+                .padding([.leading, .trailing], 5)
+                .overlay(RoundedRectangle(cornerRadius: 20).stroke(Color.gray))
                 .padding()
             
             SecureField("Password", text: $viewModel.password)
                 .autocapitalization(.none)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .frame(width: 350, height: 40, alignment: .center)
+                .textFieldStyle(PlainTextFieldStyle())
+                .padding([.leading, .trailing], 5)
+                .overlay(RoundedRectangle(cornerRadius: 20).stroke(Color.gray))
                 .padding()
             
             if let errorMessage = viewModel.errorMessage {
                 Text(errorMessage).foregroundColor(.red)
             }
-            
-            Button(action: {
-                viewModel.login()
-                if viewModel.isAuthenticated {
-                    showMainTabView = true
+            HStack {
+                Button(action: {
+                    viewModel.login()
+                    if viewModel.isAuthenticated {
+                        showMainTabView = true
+                    }
+                }) {
+                    Text("Login")
+                        .padding()
+                        .frame(width: 140.0, height: 60.0)
+                        .background(Color.blue)
+                        .foregroundColor(.white)
+                        .cornerRadius(10)
                 }
-            }) {
-                Text("Login")
-                    .padding()
-                    .background(Color.blue)
-                    .foregroundColor(.white)
-                    .cornerRadius(10)
+                
+                Spacer()
+                    .frame(width: 40)
+                
+                Button(action: {
+                    
+                }
+                       ) {
+                    Text("Register")
+                        .padding()
+                        .frame(width: 140.0, height: 60.0)
+                        .background(Color.green)
+                        .foregroundColor(.white)
+                        .cornerRadius(10)
+                }
             }
         }
         .padding()
@@ -52,4 +75,8 @@ struct LoginView: View {
             MainTabView(dependency: dependencyContainer)
         }
     }
+}
+
+#Preview {
+    LoginView(dependencyContainer: DependencyContainer())
 }

@@ -22,6 +22,7 @@ struct RecipeDetail: Decodable, Identifiable, Equatable {
     let strMealThumb: String
     let strTags: String?
     let strYoutube: String?
+    let isFavorite: Bool?
 
     var id: String { idMeal }
 }
