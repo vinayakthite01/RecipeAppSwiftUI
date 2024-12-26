@@ -4,9 +4,14 @@
 <dict>
 	<key>BASE_URL</key>
 	<string>$(BASE_URL)</string>
-    <key>NSLocationWhenInUseUsageDescription</key>
-    <string>We need your location to show it on the map.</string>
-    <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-    <string>We need your location to show it on the map.</string>
+	<key>UILaunchScreen</key>
+	<dict>
+		<key>UIColorName</key>
+		<string>AppIconColor</string>
+		<key>UIImageName</key>
+		<string>LaunchIcon</string>
+		<key>UILaunchScreen</key>
+		<string></string>
+	</dict>
 </dict>
 </plist>

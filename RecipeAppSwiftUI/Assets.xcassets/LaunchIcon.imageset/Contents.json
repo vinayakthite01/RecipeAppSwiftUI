@@ -1,6 +1,7 @@
 {
-  "colors" : [
+  "images" : [
     {
+      "filename" : "clipart320.png",
       "idiom" : "universal"
     }
   ],
