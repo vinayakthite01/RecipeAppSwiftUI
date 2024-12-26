@@ -7,10 +7,12 @@
 
 import Foundation
 import CoreData
+import Combine
 
 class RegistrationViewModel: ObservableObject {
     @Published var username: String = ""
     @Published var password: String = ""
+    @Published var successMessage: String?
     @Published var errorMessage: String?
     @Published var isLoading: Bool = false
     
@@ -27,12 +29,36 @@ class RegistrationViewModel: ObservableObject {
                 self?.isLoading = false
                 switch completion {
                 case.failure(let error):
+                    self?.successMessage = nil
                     self?.errorMessage = error.localizedDescription
                 case.finished:
                     break
                 }
-            } receiveValue: { _ in
+            } receiveValue: { [weak self] _ in
                 Logger.log("User registered successfully")
+                self?.errorMessage = nil
+                self?.successMessage = "User registered successfully"
             }
+    }
+    
+    func validate() -> Bool {
+        errorMessage = nil
+        if username.count <= 4 && password.count <= 4 {
+            successMessage = nil
+            errorMessage = "Username and password must be at least 4 characters long"
+            return false
+        } else if username.count < 4 {
+            successMessage = nil
+            errorMessage = "Username must be at least 4 characters long"
+            return false
+        } else if password.count < 4 {
+            successMessage = nil
+            errorMessage = "Password must be at least 4 characters long"
+            return false
+        } else {
+            successMessage = nil
+            errorMessage = nil
+            return true
+        }
     }
 }

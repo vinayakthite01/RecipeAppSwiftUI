@@ -18,23 +18,7 @@ struct AppEntryView: View {
                 if authService.isLoggedIn {
                     MainTabView(dependency: dependencyContainer)
                 } else {
-                    VStack {
-                        NavigationLink(destination: LoginView(dependencyContainer: dependencyContainer)) {
-                            Text("Login")
-                                .padding()
-                                .background(Color.blue)
-                                .foregroundColor(.white)
-                                .cornerRadius(10)
-                        }
-                        
-                        NavigationLink(destination: RegistrationView(dependencyContainer: dependencyContainer)) {
-                            Text("Register")
-                                .padding()
-                                .background(Color.green)
-                                .foregroundColor(.white)
-                                .cornerRadius(10)
-                        }
-                    }
+                    LoginView(dependencyContainer: dependencyContainer)
                 }
             }
             .onAppear {
