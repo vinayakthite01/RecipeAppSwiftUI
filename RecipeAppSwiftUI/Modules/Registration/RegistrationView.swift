@@ -59,6 +59,7 @@ struct RegistrationView: View {
                 }
             }) {
                 Text("Register")
+//                    .titleStyle()
                     .padding()
                     .frame(width: 140.0, height: 60.0)
                     .background(Color.green)

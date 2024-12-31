@@ -32,6 +32,11 @@ protocol CoreDataServiceProtocol {
     /// - Returns: Void/ Error
     func saveUser(_ user: User) -> Future<Void, Error>
     
+    /// Check if recipe exists
+    /// - Parameter id: recipe Id
+    /// - Returns: Boolean result or error
+    func checkRecipeExists(id: String) -> Future<Bool, Error>
+    
     /// Validate if user is registered
     /// - Parameters:
     ///   - username: username
@@ -43,6 +48,11 @@ protocol CoreDataServiceProtocol {
     /// - Parameter username: for username
     /// - Returns: User/ Error
     func fetchUserDetails(username: String) -> Future<User?, Error>
+    
+    /// Check if user already exists in database
+    /// - Parameter username: username
+    /// - Returns: boolean result or error on failure
+    func checkUserExists(username: String) -> Future<Bool, Error>
 }
 
 // MARK: - CoreData Service
@@ -119,6 +129,20 @@ class CoreDataService: CoreDataServiceProtocol {
         }
     }
     
+    func checkRecipeExists(id: String) -> Future<Bool, Error> {
+        return Future { promise in
+            let fetchRequest: NSFetchRequest<SavedRecipe> = SavedRecipe.fetchRequest()
+            fetchRequest.predicate = NSPredicate(format: "id == %@", id)
+            
+            do {
+                let savedRecipes = try self.context.fetch(fetchRequest)
+                savedRecipes.count > 0 ? promise(.success(true)) : promise(.success(false))
+            } catch {
+                promise(.failure(error))
+            }
+        }
+    }
+    
     func saveUser(_ user: User) -> Future<Void, Error> {
         return Future { promise in
             let userEntity = UserEntity(context: self.context)
@@ -129,6 +153,20 @@ class CoreDataService: CoreDataServiceProtocol {
             
             self.saveContext()
             promise(.success(()))
+        }
+    }
+    
+    func checkUserExists(username: String) -> Future<Bool, Error> {
+        return Future { promise in
+            let fetchRequest: NSFetchRequest<UserEntity> = UserEntity.fetchRequest()
+            fetchRequest.predicate = NSPredicate(format: "username == %@", username)
+            do {
+                let userEntities = try self.context.fetch(fetchRequest)
+                userEntities.count > 0 ? promise(.success(true)) : promise(.success(false))
+            } catch {
+                Logger.log("error: \(error.localizedDescription)")
+                promise(.failure(error))
+            }
         }
     }
     

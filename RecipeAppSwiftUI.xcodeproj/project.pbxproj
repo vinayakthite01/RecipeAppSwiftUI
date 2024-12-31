@@ -69,6 +69,7 @@
 		F3BA8ED22D1D4E8000E24A06 /* RecipeCartModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BA8ECF2D1D4E8000E24A06 /* RecipeCartModel.swift */; };
 		F3BA8ED32D1D4E8000E24A06 /* RecipeCartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BA8ED02D1D4E8000E24A06 /* RecipeCartView.swift */; };
 		F3BA8ED42D1D4E8000E24A06 /* RecipeCartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BA8ED12D1D4E8000E24A06 /* RecipeCartViewModel.swift */; };
+		F3BA8F0F2D1EAC8B00E24A06 /* TitleModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BA8F0E2D1EAC7F00E24A06 /* TitleModifier.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -157,6 +158,7 @@
 		F3BA8ECF2D1D4E8000E24A06 /* RecipeCartModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCartModel.swift; sourceTree = "<group>"; };
 		F3BA8ED02D1D4E8000E24A06 /* RecipeCartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCartView.swift; sourceTree = "<group>"; };
 		F3BA8ED12D1D4E8000E24A06 /* RecipeCartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCartViewModel.swift; sourceTree = "<group>"; };
+		F3BA8F0E2D1EAC7F00E24A06 /* TitleModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleModifier.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -209,6 +211,7 @@
 		F36803382D00C14A00DA7EC1 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				F3BA8F0E2D1EAC7F00E24A06 /* TitleModifier.swift */,
 				F36803452D01CC4300DA7EC1 /* NetworkStateMonitor.swift */,
 				F36803362D00C13B00DA7EC1 /* Logger.swift */,
 			);
@@ -618,6 +621,7 @@
 				F368032F2D00AC8F00DA7EC1 /* Router.swift in Sources */,
 				F36803242D008A7000DA7EC1 /* RecipeDetailView.swift in Sources */,
 				F3BA8EC32D157AC000E24A06 /* AuthenticationService.swift in Sources */,
+				F3BA8F0F2D1EAC8B00E24A06 /* TitleModifier.swift in Sources */,
 				F368043B2D0ABCD200DA7EC1 /* SavedRecipesView.swift in Sources */,
 				F38E76EC2CFF17DE005756A5 /* CategoriesViewModel.swift in Sources */,
 				F36803352D00B64600DA7EC1 /* Endpoints.swift in Sources */,

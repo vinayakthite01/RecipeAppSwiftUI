@@ -61,9 +61,9 @@ struct LoginView: View {
                 Button(action: {
                     navigationPath.append("RegistrationView")
                 }) {
-                    Text("Create an account")
+                    Text("Don't have account?\nSign up")
                         .padding()
-                        .frame(height: 60.0)
+                        .frame(height: 120.0)
                         .foregroundColor(.black)
                         .cornerRadius(10)
                 }
