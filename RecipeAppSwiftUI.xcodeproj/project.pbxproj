@@ -53,7 +53,7 @@
 		F38E76F62CFF5702005756A5 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38E76F52CFF5702005756A5 /* Environment.swift */; };
 		F3BA8E272D0C3C6700E24A06 /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BA8E262D0C3C6700E24A06 /* CoreDataService.swift */; };
 		F3BA8E2A2D0C3C9400E24A06 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BA8E292D0C3C9400E24A06 /* LoginView.swift */; };
-		F3BA8E2C2D0C74D400E24A06 /* UIView+Extenion.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BA8E2B2D0C74BA00E24A06 /* UIView+Extenion.swift */; };
+		F3BA8E2C2D0C74D400E24A06 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BA8E2B2D0C74BA00E24A06 /* UIView+Extension.swift */; };
 		F3BA8E692D1010FA00E24A06 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BA8E682D1010F300E24A06 /* RegistrationView.swift */; };
 		F3BA8E6C2D10111500E24A06 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BA8E6B2D10110D00E24A06 /* RegistrationViewModel.swift */; };
 		F3BA8E6E2D1011A800E24A06 /* AppEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BA8E6D2D1011A200E24A06 /* AppEntryView.swift */; };
@@ -70,6 +70,7 @@
 		F3BA8ED32D1D4E8000E24A06 /* RecipeCartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BA8ED02D1D4E8000E24A06 /* RecipeCartView.swift */; };
 		F3BA8ED42D1D4E8000E24A06 /* RecipeCartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BA8ED12D1D4E8000E24A06 /* RecipeCartViewModel.swift */; };
 		F3BA8F0F2D1EAC8B00E24A06 /* TitleModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BA8F0E2D1EAC7F00E24A06 /* TitleModifier.swift */; };
+		F3BA8F112D26833A00E24A06 /* BottomSheetView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BA8F102D26833600E24A06 /* BottomSheetView+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -142,7 +143,7 @@
 		F38E76F52CFF5702005756A5 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		F3BA8E262D0C3C6700E24A06 /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
 		F3BA8E292D0C3C9400E24A06 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
-		F3BA8E2B2D0C74BA00E24A06 /* UIView+Extenion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extenion.swift"; sourceTree = "<group>"; };
+		F3BA8E2B2D0C74BA00E24A06 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		F3BA8E682D1010F300E24A06 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		F3BA8E6B2D10110D00E24A06 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 		F3BA8E6D2D1011A200E24A06 /* AppEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEntryView.swift; sourceTree = "<group>"; };
@@ -159,6 +160,7 @@
 		F3BA8ED02D1D4E8000E24A06 /* RecipeCartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCartView.swift; sourceTree = "<group>"; };
 		F3BA8ED12D1D4E8000E24A06 /* RecipeCartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCartViewModel.swift; sourceTree = "<group>"; };
 		F3BA8F0E2D1EAC7F00E24A06 /* TitleModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleModifier.swift; sourceTree = "<group>"; };
+		F3BA8F102D26833600E24A06 /* BottomSheetView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BottomSheetView+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -221,7 +223,8 @@
 		F368033B2D00C9CE00DA7EC1 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				F3BA8E2B2D0C74BA00E24A06 /* UIView+Extenion.swift */,
+				F3BA8F102D26833600E24A06 /* BottomSheetView+Extension.swift */,
+				F3BA8E2B2D0C74BA00E24A06 /* UIView+Extension.swift */,
 				F36803392D00C9C500DA7EC1 /* DateFormatter+Extension.swift */,
 			);
 			path = Extension;
@@ -603,10 +606,11 @@
 				F3BA8E912D14102A00E24A06 /* ProfileViewModel.swift in Sources */,
 				F3BA8E702D11834A00E24A06 /* SearchViewModel.swift in Sources */,
 				F38E76E92CFF16B4005756A5 /* CategoriesModel.swift in Sources */,
+				F3BA8F112D26833A00E24A06 /* BottomSheetView+Extension.swift in Sources */,
 				F36803222D008A5500DA7EC1 /* RecipeDetailViewModel.swift in Sources */,
 				F38E76EF2CFF1829005756A5 /* CategoriesView.swift in Sources */,
 				F368032D2D00A7FD00DA7EC1 /* RouterHelper.swift in Sources */,
-				F3BA8E2C2D0C74D400E24A06 /* UIView+Extenion.swift in Sources */,
+				F3BA8E2C2D0C74D400E24A06 /* UIView+Extension.swift in Sources */,
 				F36803202D008A3400DA7EC1 /* RecipeDetailModel.swift in Sources */,
 				F3BA8EBB2D148A7300E24A06 /* MapViewCoordinator.swift in Sources */,
 				F36803332D00B22D00DA7EC1 /* DirectURLRouter.swift in Sources */,

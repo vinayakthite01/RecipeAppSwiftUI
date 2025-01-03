@@ -16,6 +16,7 @@ class RegistrationViewModel: ObservableObject {
     @Published var errorMessage: String?
     @Published var isLoading: Bool = false
     
+    private var cancellables = Set<AnyCancellable>()
     private let coreDataService: CoreDataServiceProtocol
     
     init(coredataService: CoreDataServiceProtocol) {
@@ -24,21 +25,22 @@ class RegistrationViewModel: ObservableObject {
     
     func register() {
         isLoading = true
-        coreDataService.saveUser(User(id: UUID(), username: username, password: password, profileImage: nil))
+        let user = User(id: UUID(), username: username, password: password, profileImage: nil)
+        coreDataService.registerUser(user)
             .sink { [weak self] completion in
                 self?.isLoading = false
                 switch completion {
                 case.failure(let error):
                     self?.successMessage = nil
-                    self?.errorMessage = error.localizedDescription
+                    self?.errorMessage = error.description
                 case.finished:
                     break
                 }
             } receiveValue: { [weak self] _ in
-                Logger.log("User registered successfully")
-                self?.errorMessage = nil
                 self?.successMessage = "User registered successfully"
+                self?.errorMessage = nil
             }
+            .store(in: &cancellables)
     }
     
     func validate() -> Bool {

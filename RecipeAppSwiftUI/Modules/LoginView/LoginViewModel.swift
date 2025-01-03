@@ -7,6 +7,7 @@
 
 import Foundation
 import CoreData
+import Combine
 
 class LoginViewModel: ObservableObject {
     @Published var username: String = ""
@@ -15,6 +16,7 @@ class LoginViewModel: ObservableObject {
     @Published var isAuthenticated: Bool = false
     @Published var isLoading: Bool = false
     
+    private var cancellables = Set<AnyCancellable>()
     private let coreDataService: CoreDataServiceProtocol
     
     init(coredataService: CoreDataServiceProtocol) {
@@ -30,7 +32,6 @@ class LoginViewModel: ObservableObject {
                 case.failure(let error):
                     self?.errorMessage = error.localizedDescription
                 case.finished:
-                    Logger.log("Finished fetching the user")
                     break
                 }
             } receiveValue: { [weak self] user in
@@ -42,8 +43,8 @@ class LoginViewModel: ObservableObject {
                 }
                 self?.username = userName
                 UserDefaults.standard.set(userName, forKey: "loggedinUser")
-                Logger.log("userName: \(userName)")
                 self?.isAuthenticated = true
             }
+            .store(in: &cancellables)
     }
 }

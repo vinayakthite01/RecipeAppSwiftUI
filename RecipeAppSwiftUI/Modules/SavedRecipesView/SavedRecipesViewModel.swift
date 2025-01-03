@@ -28,12 +28,12 @@ class SavedRecipesViewModel: ObservableObject {
     func fetchSavedRecipes() {
         isLoading = true
         errorMessage = nil
-
-        coredataService.fetchSavedRecipes()
+        
+        coredataService.fetchAllSavedRecipes()
             .sink { [weak self] completion in
                 self?.isLoading = false
                 switch completion {
-                
+                    
                 case .failure(let error):
                     self?.errorMessage = error.localizedDescription
                 case .finished:
@@ -48,5 +48,6 @@ class SavedRecipesViewModel: ObservableObject {
                     self?.recipes.sort { $0.id > $1.id }
                 }
             }
+            .store(in: &cancellables)
     }
 }

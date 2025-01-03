@@ -16,6 +16,27 @@ struct MainTabView: View {
     let dependency: DependencyContainerProtocol
     @State private var selectedTab: Tab = .home
     
+    /*
+    var popOver: some View {
+           Group {
+               if true {
+                   ZStack(alignment: .bottom) {
+                           Color.black.opacity(0.4).ignoresSafeArea()
+                           ZStack {
+                               Rectangle()
+                                   .fill(.orange)
+                                   .frame(maxWidth: .infinity, maxHeight: 60.0, alignment: .)
+                           }
+                       }
+                       //.ignoresSafeArea()     // << probably you also need this
+                       .onTapGesture {
+//                           showSheet.toggle()
+                       }
+               }
+           }
+       }
+    */
+    
     var body: some View {
         TabView {
             CategoriesView(dependencyContainer: dependency)
@@ -30,12 +51,16 @@ struct MainTabView: View {
                 .tabItem {
                     Label("Saved", systemImage: "heart")
                 }
+            CartView(dependencyContainer: dependency)
+                .tabItem {
+                    Label("Cart", systemImage: "cart")
+                }
             ProfileView(dependencyContainer: dependency)
                 .tabItem {
                     Label("Settings", systemImage: "gearshape")
                 }
-            
         }
+//        .overlay(popOver)
     }
 }
 

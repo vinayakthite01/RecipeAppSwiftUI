@@ -39,7 +39,7 @@ class CategoriesViewModel: ObservableObject {
                     self?.errorMessage = apiError.description
                 }
             } receiveValue: { [weak self] categories in
-                Logger.log("Category Response: \(categories)")
+//                Logger.log("Category Response: \(categories)")
                 self?.categories = categories
             }
             .store(in: &cancellables)

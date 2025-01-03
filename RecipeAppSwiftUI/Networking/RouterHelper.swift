@@ -63,6 +63,7 @@ enum APIError: Error, Equatable {
     case noContent
     case unauthorised
     case unreachable
+    case userAlreadyExists
     case somethingWentWrong
     case jsonDecodingFailure
     case responseUnsuccessful(description: String)
@@ -82,6 +83,7 @@ extension APIError: CustomStringConvertible {
         case .noContent: return "Your request is valid but server returned no data"
         case .unauthorised: return "Your session has been timed out. Please login again."
         case .unreachable: return "Please check your internet connectivity."
+        case .userAlreadyExists: return "User already exists."
         case .somethingWentWrong: return "Something went wrong, Please try after sometime."
         case .jsonDecodingFailure: return "Unable to manage your response, Please try after sometime."
         case .responseUnsuccessful(let description): return description
@@ -108,6 +110,46 @@ struct APIErrorResponseModel: Codable {
     let status: Int
     
     var error: String {
-        (code.isEmpty ? "" : (code  + ": ")) + (messages.first ?? "")
+        (code.isEmpty ? "" : (code + ": ")) + (messages.first ?? "")
+    }
+
+    // Decoding from JSON data
+    static func from(jsonData: Data) -> APIErrorResponseModel? {
+        let decoder = JSONDecoder()
+        do {
+            let response = try decoder.decode(APIErrorResponseModel.self, from: jsonData)
+            return response
+        } catch {
+            print("Error decoding JSON: \(error)")
+            return nil
+        }
+    }
+
+    // Decoding from JSON string
+    static func from(jsonString: String) -> APIErrorResponseModel? {
+        guard let data = jsonString.data(using: .utf8) else {
+            return nil
+        }
+        return from(jsonData: data)
+    }
+
+    // Convert to JSON data
+    func toJSONData() -> Data? {
+        let encoder = JSONEncoder()
+        do {
+            let data = try encoder.encode(self)
+            return data
+        } catch {
+            print("Error encoding to JSON: \(error)")
+            return nil
+        }
+    }
+
+    // Convert to JSON string
+    func toJSONString() -> String? {
+        guard let data = toJSONData() else {
+            return nil
+        }
+        return String(data: data, encoding: .utf8)
     }
 }

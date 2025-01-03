@@ -72,7 +72,7 @@ struct LoginView: View {
             .fullScreenCover(isPresented: $showMainTabView) {
                 MainTabView(dependency: dependencyContainer)
             }
-            .navigationTitle("Login")
+            .navigationTitle("Login") 
             .navigationDestination(for: String.self) { value in
                 if value == "RegistrationView" {
                     RegistrationView(dependencyContainer: dependencyContainer)
